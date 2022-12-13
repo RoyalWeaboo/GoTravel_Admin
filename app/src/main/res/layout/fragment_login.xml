@@ -97,7 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="40dp"
         android:backgroundTint="#F98C4B"
         android:fontFamily="@font/inter_bold"
