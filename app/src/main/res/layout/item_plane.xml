@@ -65,10 +65,30 @@
                 android:id="@+id/imageView3"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnActive"
                 app:layout_constraintEnd_toEndOf="@+id/tvCountPlane"
-                app:layout_constraintTop_toBottomOf="@+id/tvPlane"
+                app:layout_constraintTop_toTopOf="@+id/btnActive"
                 app:srcCompat="@drawable/delete" />
+
+            <!-- Khusus button ini harus diberikan logika untuk mengubah warna jadi inactive -->
+            <!-- Warna inactive : #E40A0A -->
+            <Button
+                android:id="@+id/btnActive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#00C113"
+                android:paddingLeft="10dp"
+                android:paddingTop="0dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="0dp"
+                android:text="Active"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:cornerRadius="8dp"
+                app:layout_constraintStart_toStartOf="@+id/tvPlane"
+                app:layout_constraintTop_toBottomOf="@+id/tvPlane" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
