@@ -15,10 +15,10 @@
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.1586147926464301" />
         <entry key="app/src/main/res/layout/fragment_tiket.xml" value="0.1586147926464301" />
         <entry key="app/src/main/res/layout/item_admin.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/item_airport.xml" value="0.1586147926464301" />
-        <entry key="app/src/main/res/layout/item_flight.xml" value="0.1586147926464301" />
+        <entry key="app/src/main/res/layout/item_airport.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_flight.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_plane.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/item_tiket.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/item_tiket.xml" value="0.25" />
       </map>
     </option>
   </component>
