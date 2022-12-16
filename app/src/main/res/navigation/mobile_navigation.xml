@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_admin">
+
+
+    <fragment
+        android:id="@+id/nav_admin"
+        android:name="com.binar.c5team.gotraveladmin.view.AdminFragment"
+        android:label="AdminFragment" />
+    <fragment
+        android:id="@+id/nav_airport"
+        android:name="com.binar.c5team.gotraveladmin.view.AirportFragment"
+        android:label="AirportFragment" />
+    <fragment
+        android:id="@+id/nav_flight"
+        android:name="com.binar.c5team.gotraveladmin.view.FlightFragment"
+        android:label="FlightFragment" />
+    <fragment
+        android:id="@+id/nav_plane"
+        android:name="com.binar.c5team.gotraveladmin.view.PlaneFragment"
+        android:label="PlaneFragment" />
+    <fragment
+        android:id="@+id/nav_booking"
+        android:name="com.binar.c5team.gotraveladmin.view.BookingFragment"
+        android:label="fragment_booking"
+        tools:layout="@layout/fragment_booking" />
+</navigation>

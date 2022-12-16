@@ -3,27 +3,37 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/shape.xml" value="0.1475" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/activity_login.xml" value="0.3484375" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/activity_main.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/activity_main2.xml" value="0.35144927536231885" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/app_bar_main.xml" value="0.35144927536231885" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/content_main.xml" value="0.35144927536231885" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_admin.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_airport.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_detail.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_flight.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_gallery.xml" value="0.35144927536231885" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_home.xml" value="0.35144927536231885" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_login.xml" value="0.35144927536231885" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_login2.xml" value="0.35144927536231885" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_percobaan_layout.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_plane.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_slideshow.xml" value="0.35144927536231885" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/fragment_tiket.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/item_admin.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/item_airport.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/item_flight.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/item_plane.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/item_tiket.xml" value="0.17753623188405798" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/layout/nav_header_main.xml" value="0.35144927536231885" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/menu/activity_main_drawer.xml" value="0.3625" />
+        <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/menu/main.xml" value="0.3625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15946985891406584" />
-        <entry key="app/src/main/res/layout/fragment_admin.xml" value="0.1586147926464301" />
-        <entry key="app/src/main/res/layout/fragment_airport.xml" value="0.1586147926464301" />
-        <entry key="app/src/main/res/layout/fragment_coba.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.1586147926464301" />
-        <entry key="app/src/main/res/layout/fragment_flight.xml" value="0.1586147926464301" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.15946985891406584" />
-        <entry key="app/src/main/res/layout/fragment_percobaan_layout.xml" value="0.15946985891406584" />
-        <entry key="app/src/main/res/layout/fragment_plane.xml" value="0.1586147926464301" />
-        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.1586147926464301" />
-        <entry key="app/src/main/res/layout/fragment_tiket.xml" value="0.1586147926464301" />
-        <entry key="app/src/main/res/layout/item_admin.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/item_airport.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/item_flight.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/item_plane.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/item_tiket.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.33" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
