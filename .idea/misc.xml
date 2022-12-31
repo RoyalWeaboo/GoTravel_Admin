@@ -29,11 +29,25 @@
         <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/menu/activity_main_drawer.xml" value="0.3625" />
         <entry key="..\:/Binar Academy/GoTravel_Admin/app/src/main/res/menu/main.xml" value="0.3625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15946985891406584" />
+        <entry key="app/src/main/res/layout/fragment_admin.xml" value="0.15946985891406584" />
+        <entry key="app/src/main/res/layout/fragment_edit_airport.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_edit_booking.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_edit_flight.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_edit_plane.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.15946985891406584" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15946985891406584" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_plane.xml" value="0.15946985891406584" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.15946985891406584" />
+        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.15946985891406584" />
+        <entry key="app/src/main/res/layout/fragment_tambah_airport.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_tambah_flight.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_tambah_plane.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_tiket.xml" value="0.15946985891406584" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
