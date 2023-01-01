@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_bold"
-            android:text="Edit Airport"
+            android:text="Edit Booking"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton2"
@@ -44,7 +44,7 @@
             android:ems="10"
             android:fontFamily="@font/inter_bold"
             android:inputType="textPersonName"
-            android:text="Bandara Udara Internasional Soekarno-Hatta"
+            android:text="Andre"
             android:textColor="#B3FFFFFF"
             android:textColorHint="#B3FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
             android:ems="10"
             android:fontFamily="@font/inter_bold"
             android:inputType="textPersonName"
-            android:text="Banten"
+            android:text="8"
             android:textColor="#B3FFFFFF"
             android:textColorHint="#B3FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
             android:ems="10"
             android:fontFamily="@font/inter_bold"
             android:inputType="textPersonName"
-            android:text="Tangerang"
+            android:text="2"
             android:textColor="#B3FFFFFF"
             android:textColorHint="#B3FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +100,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName12" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName16" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton2"
@@ -124,7 +124,7 @@
             android:ems="10"
             android:fontFamily="@font/inter_bold"
             android:inputType="textPersonName"
-            android:text="Indonesia"
+            android:text="123"
             android:textColor="#B3FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -140,11 +140,75 @@
             android:ems="10"
             android:fontFamily="@font/inter_bold"
             android:inputType="textPersonName"
-            android:text="On"
+            android:text="True"
             android:textColor="#B3FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName11" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:fontFamily="@font/inter_bold"
+            android:inputType="textPersonName"
+            android:text="082376569085"
+            android:textColor="#B3FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName12" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:fontFamily="@font/inter_bold"
+            android:inputType="textPersonName"
+            android:text="021987658907"
+            android:textColor="#B3FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName13" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:fontFamily="@font/inter_bold"
+            android:inputType="textPersonName"
+            android:text="Rp. 1.000.000"
+            android:textColor="#B3FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName14" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:fontFamily="@font/inter_bold"
+            android:inputType="textPersonName"
+            android:text="2022-12-07"
+            android:textColor="#B3FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName15" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
