@@ -1,5 +1,7 @@
 package com.binar.c5team.gotraveladmin.view.adapter
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,6 +12,9 @@ import com.binar.c5team.gotraveladmin.model.PlaneList
 import com.binar.c5team.gotraveladmin.model.UserAdminResponse
 
 class PlaneAdapter(private var listPlane: List<PlaneList>) : RecyclerView.Adapter<PlaneAdapter.ViewHolder>() {
+    var onEditClick : ((PlaneList)->Unit)? = null
+    var onDeleteClick : ((Int)->Unit)? = null
+
     class ViewHolder(var binding: ItemPlaneBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -23,18 +28,22 @@ class PlaneAdapter(private var listPlane: List<PlaneList>) : RecyclerView.Adapte
         holder.binding.tvPlane.text = listPlane[position].name
         holder.binding.tvCountPlane.text = listPlane[position].code.toString()
 
-        holder.binding.cvPlane.setOnClickListener {
-            var bundle = Bundle()
-            bundle.putSerializable("datadetail",listPlane[position])
-        }
 
-        holder.binding.btnEdit.setOnClickListener {
-
+        if (listPlane[position].status == "Off") {
+            holder.binding.btnActive.text = "Inactive"
+            holder.binding.btnActive.setBackgroundColor(Color.parseColor("#E40A0A"))
         }
 
         holder.binding.btnDelete.setOnClickListener {
+            onDeleteClick?.invoke(listPlane[position].id)
 
         }
+
+        holder.binding.btnEdit.setOnClickListener {
+            onEditClick?.invoke(listPlane[position])
+        }
+
+
     }
 
     override fun getItemCount(): Int {

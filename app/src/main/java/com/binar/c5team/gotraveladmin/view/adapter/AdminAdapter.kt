@@ -6,8 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.c5team.gotraveladmin.databinding.ItemAdminBinding
 import com.binar.c5team.gotraveladmin.model.UserAdminResponse
+import com.binar.c5team.gotraveladmin.model.admin.User
 
-class AdminAdapter(private var listAdmin: List<UserAdminResponse>) : RecyclerView.Adapter<AdminAdapter.ViewHolder>() {
+class AdminAdapter(private var listAdmin: List<User>) : RecyclerView.Adapter<AdminAdapter.ViewHolder>() {
+
+
+
     class ViewHolder(var binding: ItemAdminBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -21,18 +25,8 @@ class AdminAdapter(private var listAdmin: List<UserAdminResponse>) : RecyclerVie
         holder.binding.tvUsername.text = listAdmin[position].username
         holder.binding.tvRole.text = listAdmin[position].role
 
-        holder.binding.cvAdmin.setOnClickListener {
-            var bundle = Bundle()
-            bundle.putSerializable("datadetail",listAdmin[position])
-        }
 
-        holder.binding.btnEdit.setOnClickListener {
 
-        }
-
-        holder.binding.btnRemove.setOnClickListener {
-
-        }
     }
 
     override fun getItemCount(): Int {

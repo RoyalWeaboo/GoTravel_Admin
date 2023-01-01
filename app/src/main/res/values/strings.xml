@@ -13,4 +13,11 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="tab_text_1">One Trip</string>
+    <string name="tab_text_2">Round Trip</string>
+
+    <string-array name="status_array">
+        <item>On</item>
+        <item>Off</item>
+    </string-array>
 </resources>

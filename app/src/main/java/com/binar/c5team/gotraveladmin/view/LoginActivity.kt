@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.binar.c5team.gotraveladmin.MainActivity
 import com.binar.c5team.gotraveladmin.databinding.FragmentLoginBinding
 import com.binar.c5team.gotraveladmin.model.LoginData
@@ -28,8 +29,11 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginProgressBar.visibility = View.GONE
-        sharedPref = this.getSharedPreferences("data", Context.MODE_PRIVATE)
+        sharedPref = this.getSharedPreferences("datalogin", Context.MODE_PRIVATE)
 
+        if (sharedPref.getString("token","") != "") {
+            startActivity(Intent(this@LoginActivity,MainActivity::class.java))
+        }
 
         binding.btnLogin.setOnClickListener {
             validateLoginInput()

@@ -1,60 +1,128 @@
 package com.binar.c5team.gotraveladmin.view
 
+import android.content.Context
+import android.content.SharedPreferences
+import android.os.Binder
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.c5team.gotraveladmin.R
+import com.binar.c5team.gotraveladmin.databinding.FragmentFlightBinding
+import com.binar.c5team.gotraveladmin.view.adapter.AirportAdapter
+import com.binar.c5team.gotraveladmin.view.adapter.FlightAdapter
+import com.binar.c5team.gotraveladmin.view.adapter.PlaneAdapter
+import com.binar.c5team.gotraveladmin.viewmodel.AirportViewModel
+import com.binar.c5team.gotraveladmin.viewmodel.FlightViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FlightFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FlightFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentFlightBinding
+    private lateinit var adapter: FlightAdapter
+    private lateinit var sharedPref: SharedPreferences
+    lateinit var sharedPrefLogin: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_flight, container, false)
+    ): View {
+        binding = FragmentFlightBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FlightFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FlightFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        sharedPref = requireActivity().getSharedPreferences("dataflight", Context.MODE_PRIVATE)
+        sharedPrefLogin = requireActivity().getSharedPreferences("datalogin", Context.MODE_PRIVATE)
+
+        showDataFlight()
+
+        binding.btnAddFlight.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_flight_to_addFlightFragment)
+        }
+    }
+
+    private fun showDataFlight() {
+        val viewModel = ViewModelProvider(this)[FlightViewModel::class.java]
+        viewModel.callFlightData {
+            adapter = FlightAdapter(it)
+            binding.rvListPlane.adapter = adapter
+            adapter.onCardClick = {
+                val flightInfo = sharedPref.edit()
+                flightInfo.putString("planename",it.plane.name)
+                flightInfo.putInt("idplane",it.plane.id)
+                flightInfo.putString("class",it.kelas)
+                flightInfo.putInt("seat",it.availableSeats)
+                flightInfo.putInt("price",it.price)
+                flightInfo.putString("arrival",it.arrivalTime)
+                flightInfo.putString("departure",it.departureTime)
+                flightInfo.putString("date",it.flightDate)
+                flightInfo.apply()
+
+                findNavController().navigate(R.id.action_nav_flight_to_detailFlightFragment)
             }
+
+            adapter.onEditClick = {
+                val flightInfo = sharedPref.edit()
+                flightInfo.putInt("id",it.id)
+                flightInfo.putString("arrival_time",it.arrivalTime)
+                flightInfo.putInt("available_seats",it.availableSeats)
+                flightInfo.putString("departure_time",it.departureTime)
+                flightInfo.putString("flight_date",it.flightDate)
+                flightInfo.putInt("from_airport_id",it.fromAirportId)
+                flightInfo.putInt("id_plane",it.idPlane)
+                flightInfo.putString("kelas",it.kelas)
+                flightInfo.putInt("price",it.price)
+                flightInfo.putInt("to_airport_id",it.toAirportId)
+                flightInfo.apply()
+
+                findNavController().navigate(R.id.action_nav_flight_to_editFlightFragment)
+
+            }
+
+            adapter.onDeleteClick = {
+                val token = sharedPrefLogin.getString("token","").toString()
+                viewModel.deleteFlightData().observe(viewLifecycleOwner) {
+                    if (it != null) {
+                        Toast.makeText(
+                            requireActivity(),
+                            "Deleted Plane Success",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        viewModel.callFlightData {
+                            adapter = FlightAdapter(it)
+                            binding.rvListPlane.adapter = adapter
+                            binding.rvListPlane.layoutManager = LinearLayoutManager(
+                                context, LinearLayoutManager.VERTICAL, false
+                            )
+                            binding.rvListPlane.setHasFixedSize(true)
+                            refreshCurrentFragment()
+
+                        }
+                    } else {
+                        Toast.makeText(
+                            requireActivity(),
+                            "Delete Failed",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+                viewModel.callDeleteFlightData(token,it)
+            }
+        }
+        binding.rvListPlane.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvListPlane.setHasFixedSize(true)
+    }
+
+    private fun refreshCurrentFragment(){
+        val id = findNavController().currentDestination?.id
+        findNavController().popBackStack(id!!,true)
+        findNavController().navigate(id)
     }
 }
