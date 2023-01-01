@@ -31,7 +31,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15946985891406584" />
         <entry key="app/src/main/res/layout/fragment_admin.xml" value="0.15946985891406584" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.15946985891406584" />
-        <entry key="app/src/main/res/layout/fragment_detail_admin.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_detail_admin.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_edit_admin.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_edit_airport.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_edit_booking.xml" value="0.25" />
