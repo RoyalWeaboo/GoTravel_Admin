@@ -1,40 +1,42 @@
 package com.binar.c5team.gotraveladmin.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.findNavController
+import androidx.lifecycle.ViewModelProvider
 import com.binar.c5team.gotraveladmin.MainActivity
 import com.binar.c5team.gotraveladmin.R
 import com.binar.c5team.gotraveladmin.databinding.FragmentLoginBinding
-import com.binar.c5team.gotraveladmin.model.LoginData
-import com.binar.c5team.gotraveladmin.model.LoginResponse
-import com.binar.c5team.gotraveladmin.network.RetrofitClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.binar.c5team.gotraveladmin.viewmodel.UserViewModel
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var sharedPref: SharedPreferences
     private lateinit var binding : FragmentLoginBinding
+    lateinit var viewModel : UserViewModel
 
-    var progressView: ViewGroup? = null
+    private var progressView: ViewGroup? = null
     private var isProgressShowing = false
+
+    //data
+    var uId: Int = 0
+    var usernameRes: String = ""
+    var token: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.loginProgressBar.visibility = View.GONE
         sharedPref = this.getSharedPreferences("datalogin", Context.MODE_PRIVATE)
+
+        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
         if (sharedPref.getString("token","") != "") {
             startActivity(Intent(this@LoginActivity,MainActivity::class.java))
@@ -51,62 +53,39 @@ class LoginActivity : AppCompatActivity() {
         val passwordinput = binding.inputPassword.editText?.text.toString()
 
         if (usernameInput.isNotEmpty() && passwordinput.isNotEmpty()) {
-            binding.loginProgressBar.visibility = View.VISIBLE
-            validateLoginData(usernameInput, passwordinput,view)
+            login(usernameInput, passwordinput, view)
         } else {
             Toast.makeText(this, "Username or Password can't be empty !", Toast.LENGTH_SHORT)
                 .show()
         }
     }
 
-    private fun validateLoginData(username: String, password: String,view: View) {
+    private fun login(username: String, password: String,view: View){
         showProgressingView(view)
+        viewModel.postLoginApi(this, username, password)
 
-        RetrofitClient.apiInstance.getLoginData(LoginData(username, password))
-            .enqueue(object : Callback<LoginResponse> {
-                override fun onResponse(
-                    call: Call<LoginResponse>,
-                    response: Response<LoginResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        if (response.body()?.message == "Login Success") {
-                            Log.d("login response", response.body().toString())
-                            val saveData = sharedPref.edit()
-                            saveData.putString("session", "true")
-                            saveData.putInt("userId", response.body()!!.id)
-                            saveData.putString("username", response.body()?.username)
-                            saveData.putString("token", response.body()?.token)
-                            saveData.apply()
-                            binding.loginProgressBar.visibility = View.GONE
-                            startActivity(Intent(this@LoginActivity,MainActivity::class.java))
-                        }
-                    } else {
-                        Log.d("login response", response.body().toString())
-                        binding.loginProgressBar.visibility = View.GONE
-                        Toast.makeText(
-                            this@LoginActivity,
-                            "Wrong Username or Password",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        hideProgressingView(view)
-                    }
+        viewModel.loading.observe(this) {
+            if (!it){
+                val saveData = sharedPref.edit()
+                saveData.putString("session", "true")
+                saveData.putInt("userId", uId)
+                saveData.putString("username", usernameRes)
+                saveData.putString("token", token)
+                saveData.apply()
+                hideProgressingView(view)
+
+                //check whether the token was added(which mean login is success)
+                if (token != "") {
+                    Toast.makeText(this, "Login Successful !", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@LoginActivity,MainActivity::class.java))
+                }else{
+                    Toast.makeText(this, "Wrong username or password !", Toast.LENGTH_SHORT).show()
                 }
-
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Log.d("Login Data Error", call.toString())
-                    binding.loginProgressBar.visibility = View.GONE
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "Something Went Wrong",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    hideProgressingView(view)
-                }
-
-            })
-        binding.loginProgressBar.visibility = View.GONE
+            }
+        }
     }
 
+    @SuppressLint("InflateParams")
     private fun showProgressingView(view : View) {
         if (!isProgressShowing) {
             isProgressShowing = true
