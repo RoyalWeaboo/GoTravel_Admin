@@ -3,10 +3,12 @@ package com.binar.c5team.gotraveladmin
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -19,7 +21,7 @@ import com.binar.c5team.gotraveladmin.model.user.User
 import com.binar.c5team.gotraveladmin.view.LoginActivity
 import com.binar.c5team.gotraveladmin.viewmodel.AdminViewModel
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -47,14 +49,15 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.nav_admin, R.id.nav_plane, R.id.nav_airport, R.id.nav_flight, R.id.nav_selectBookingFragment), drawerLayout)
+            R.id.nav_selectBookingFragment, R.id.nav_plane, R.id.nav_airport, R.id.nav_flight,R.id.nav_admin ), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
         binding.btnLogout.setOnClickListener {
+            val datalogin = sharedPref.edit()
+            datalogin.clear()
+            datalogin.apply()
             startActivity(Intent(this,LoginActivity::class.java))
-            sharedPref.edit().clear()
-            sharedPref.edit().apply()
         }
 
         val header = navView.getHeaderView(0)
@@ -85,11 +88,17 @@ class MainActivity : AppCompatActivity() {
                     imgProfile.setImageResource(R.drawable.super_admin)
                 } else {
                     imgProfile.setImageResource(R.drawable.basic_admin)
-
+                    hideItem()
                 }
             }
         }
         viewModel.callUserData(token)
+    }
+
+    private fun hideItem() {
+        val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
+        val nav_Menu: Menu = navigationView.getMenu()
+        nav_Menu.findItem(R.id.nav_admin).setVisible(false)
     }
 
 

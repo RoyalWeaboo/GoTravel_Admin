@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import com.binar.c5team.gotraveladmin.MainActivity
+import com.binar.c5team.gotraveladmin.R
 import com.binar.c5team.gotraveladmin.databinding.FragmentLoginBinding
 import com.binar.c5team.gotraveladmin.model.LoginData
 import com.binar.c5team.gotraveladmin.model.LoginResponse
@@ -22,6 +24,9 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var sharedPref: SharedPreferences
     private lateinit var binding : FragmentLoginBinding
+
+    var progressView: ViewGroup? = null
+    private var isProgressShowing = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,29 +41,27 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            validateLoginInput()
-        }
-        binding.tvRegister.setOnClickListener {
-//            Navigation.findNavController(view)
-//                .navigate(R.id.action_loginFragment_to_registerFragment)
+            validateLoginInput(it)
         }
 
     }
 
-    private fun validateLoginInput() {
+    private fun validateLoginInput(view: View) {
         val usernameInput = binding.inputUsername.editText?.text.toString()
         val passwordinput = binding.inputPassword.editText?.text.toString()
 
         if (usernameInput.isNotEmpty() && passwordinput.isNotEmpty()) {
             binding.loginProgressBar.visibility = View.VISIBLE
-            validateLoginData(usernameInput, passwordinput)
+            validateLoginData(usernameInput, passwordinput,view)
         } else {
             Toast.makeText(this, "Username or Password can't be empty !", Toast.LENGTH_SHORT)
                 .show()
         }
     }
 
-    private fun validateLoginData(username: String, password: String) {
+    private fun validateLoginData(username: String, password: String,view: View) {
+        showProgressingView(view)
+
         RetrofitClient.apiInstance.getLoginData(LoginData(username, password))
             .enqueue(object : Callback<LoginResponse> {
                 override fun onResponse(
@@ -85,6 +88,7 @@ class LoginActivity : AppCompatActivity() {
                             "Wrong Username or Password",
                             Toast.LENGTH_SHORT
                         ).show()
+                        hideProgressingView(view)
                     }
                 }
 
@@ -96,9 +100,27 @@ class LoginActivity : AppCompatActivity() {
                         "Something Went Wrong",
                         Toast.LENGTH_SHORT
                     ).show()
+                    hideProgressingView(view)
                 }
 
             })
         binding.loginProgressBar.visibility = View.GONE
+    }
+
+    private fun showProgressingView(view : View) {
+        if (!isProgressShowing) {
+            isProgressShowing = true
+            progressView = layoutInflater.inflate(R.layout.progress_bar, null) as ViewGroup
+            val v: View = view.rootView
+            val viewGroup = v as ViewGroup
+            viewGroup.addView(progressView)
+        }
+    }
+
+    private fun hideProgressingView(view : View) {
+        val v: View = view.rootView
+        val viewGroup = v as ViewGroup
+        viewGroup.removeView(progressView)
+        isProgressShowing = false
     }
 }

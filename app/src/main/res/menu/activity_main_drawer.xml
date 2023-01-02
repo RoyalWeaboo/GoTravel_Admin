@@ -5,9 +5,8 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_admin"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Admin" />
+            android:id="@+id/nav_selectBookingFragment"
+            android:title="Booking" />
         <item
             android:id="@+id/nav_plane"
             android:icon="@drawable/ic_menu_gallery"
@@ -22,7 +21,8 @@
             android:title="Flight" />
 
         <item
-            android:id="@+id/nav_selectBookingFragment"
-            android:title="Booking" />
+            android:id="@+id/nav_admin"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Admin" />
     </group>
 </menu>

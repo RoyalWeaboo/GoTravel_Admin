@@ -16,6 +16,7 @@ import com.binar.c5team.gotraveladmin.MainActivity
 import com.binar.c5team.gotraveladmin.R
 import com.binar.c5team.gotraveladmin.databinding.FragmentDetailAdminBinding
 import com.binar.c5team.gotraveladmin.databinding.FragmentDetailAirportBinding
+import com.binar.c5team.gotraveladmin.databinding.FragmentEditAdminBinding
 import com.binar.c5team.gotraveladmin.model.LoginData
 import com.binar.c5team.gotraveladmin.model.LoginResponse
 import com.binar.c5team.gotraveladmin.model.createadmin.CreateAdminResponse
@@ -31,14 +32,14 @@ class DetailAdminFragment : Fragment() {
 
     private lateinit var sharedPref: SharedPreferences
 
-    private lateinit var binding: FragmentDetailAdminBinding
+    private lateinit var binding: FragmentEditAdminBinding
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailAdminBinding.inflate(inflater,container,false)
+        binding = FragmentEditAdminBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -46,7 +47,9 @@ class DetailAdminFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = this.requireActivity().getSharedPreferences("datalogin", Context.MODE_PRIVATE)
 
-        binding.btnUpdate.setOnClickListener {
+        binding.textView12.text = "Add Admin"
+        binding.btnEdit.text = "Add"
+        binding.btnEdit.setOnClickListener {
             val name = binding.edtNamaAdmin.text.toString()
             val username = binding.edtUsernameName.text.toString()
             val gender = binding.edtGender.text.toString()
