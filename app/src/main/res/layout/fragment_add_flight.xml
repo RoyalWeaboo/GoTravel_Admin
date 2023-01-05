@@ -13,7 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
  >
 
         <TextView
@@ -30,65 +30,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView43"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:text="Plane name"
+            android:layout_height="19dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:id="@+id/edtId"
+            android:text="Id : 1"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView42" />
-
-        <EditText
-            android:id="@+id/edt_plane_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:hint="Plane name"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView43"
-            app:layout_constraintTop_toBottomOf="@+id/textView43" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView4231"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:text="Id"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_plane_name" />
-
-        <EditText
-            android:id="@+id/edt_id"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:hint="Id"
-            android:inputType="number"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView43"
-            app:layout_constraintTop_toBottomOf="@+id/textView4231" />
 
         <TextView
             android:id="@+id/textView44"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Plane identity"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="Plane id"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@+id/edt_plane_name"
-            app:layout_constraintTop_toBottomOf="@+id/edt_id" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
         <EditText
             android:id="@+id/edt_id_plane"
@@ -96,7 +58,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Plane identity"
             android:inputType="number"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
@@ -109,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="From airport id"
+            android:text="From Airport Id"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/edt_id_plane"
             app:layout_constraintTop_toBottomOf="@+id/edt_id_plane" />
@@ -120,7 +81,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="From airport identity"
             android:inputType="number"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
@@ -146,7 +106,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="To airport identity"
             android:inputType="number"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
@@ -160,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Class"
+            android:text="Flight Class"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/edt_to_airport_id"
             app:layout_constraintTop_toBottomOf="@+id/edt_to_airport_id" />
@@ -172,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Class"
+            android:hint="Economy / First / Business (Class)"
             android:inputType="textPersonName"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
@@ -195,25 +154,25 @@
             android:id="@+id/edt_seat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Seat"
             android:inputType="number"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView43"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
         <TextView
             android:id="@+id/textView49"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:text="Price"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@+id/edt_plane_name"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_seat" />
 
         <EditText
@@ -222,7 +181,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Price"
+            android:hint="Rp."
             android:inputType="number"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
@@ -246,7 +205,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Arrival time"
+            android:hint="HH:mm"
             android:inputType="textPersonName"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
@@ -271,7 +230,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Departure time"
+            android:hint="HH:mm"
             android:inputType="textPersonName"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
@@ -296,8 +255,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Flight date"
-            android:inputType="textPersonName"
+            android:hint="yyyy-MM-dd"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"

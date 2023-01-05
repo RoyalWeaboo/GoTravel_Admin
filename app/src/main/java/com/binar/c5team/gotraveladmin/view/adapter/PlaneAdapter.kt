@@ -26,7 +26,7 @@ class PlaneAdapter(private var listPlane: List<PlaneList>) : RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.tvPlane.text = listPlane[position].name
-        holder.binding.tvCountPlane.text = listPlane[position].code.toString()
+        holder.binding.tvCountPlane.text = listPlane[position].id.toString()
 
 
         if (listPlane[position].status == "Off") {

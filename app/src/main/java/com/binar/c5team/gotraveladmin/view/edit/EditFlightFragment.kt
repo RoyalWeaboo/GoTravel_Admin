@@ -36,9 +36,7 @@ class EditFlightFragment : Fragment() {
 
         binding.btnAdd.text = "Edit"
 
-        binding.edtId.setEnabled(false)
-        binding.edtId.setFocusable(false)
-        binding.edtId.setText(sharedPrefFlight.getInt("id",0).toString())
+        binding.edtId.text = sharedPrefFlight.getInt("id",0).toString()
         binding.edtArrivalTime.setText(sharedPrefFlight.getString("arrival_time","").toString())
         binding.edtSeat.setText(sharedPrefFlight.getInt("available_seats",0).toString())
         binding.edtDepartureTime.setText(sharedPrefFlight.getString("departure_time","").toString())

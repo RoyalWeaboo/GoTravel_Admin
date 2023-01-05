@@ -25,7 +25,7 @@ class AddFlightFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddFlightBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -33,6 +33,8 @@ class AddFlightFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = this.requireActivity().getSharedPreferences("datalogin", Context.MODE_PRIVATE)
+
+        binding.edtId.visibility = View.GONE
 
         binding.btnAdd.setOnClickListener {
             val viewModel = ViewModelProvider(this)[FlightViewModel::class.java]
@@ -42,7 +44,7 @@ class AddFlightFragment : Fragment() {
             val departure_time = binding.edtDepartureTime.text.toString()
             val flight_date = binding.edtFlightDate.text.toString()
             val from_airport_id = binding.edtFromAirportId.text.toString()
-            val id = binding.edtId.text.toString()
+            val id = ""
             val id_plane = binding.edtIdPlane.text.toString()
             val kelas = binding.edtClass.text.toString()
             val price = binding.edtPrice.text.toString()
