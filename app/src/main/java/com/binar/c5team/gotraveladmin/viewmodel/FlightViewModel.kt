@@ -15,6 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class FlightViewModel : ViewModel() {
+    var loading = MutableLiveData<Boolean>()
 
     var createFlightLiveData: MutableLiveData<CreateFlightResponse> = MutableLiveData()
     var putFlightLiveData: MutableLiveData<EditFlightResponse> = MutableLiveData()
@@ -101,6 +102,7 @@ class FlightViewModel : ViewModel() {
         price: Int,
         to_airport_id: Int,
     ) {
+        loading.postValue(true)
         RetrofitClient.apiWithToken(token).createFlight(
             CreateFlightData(
                 arrival_time,
@@ -124,12 +126,13 @@ class FlightViewModel : ViewModel() {
                         createFlightLiveData.postValue(response.body())
                     } else {
                         Log.d("Create Failed", response.body().toString())
-
                     }
+                    loading.postValue(false)
                 }
 
                 override fun onFailure(call: Call<CreateFlightResponse>, t: Throwable) {
                     Log.d("Create Error", call.toString())
+                    loading.postValue(false)
                 }
 
             })

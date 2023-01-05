@@ -8,6 +8,7 @@
     android:layout_marginStart="16dp"
     android:layout_marginTop="16dp"
     android:layout_marginEnd="16dp"
+    android:layout_marginBottom="16dp"
     android:paddingBottom="16dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="2dp"
@@ -96,7 +97,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvPlane" />
 
         <TextView
-            android:id="@+id/tv_arrival_time"
+            android:id="@+id/tvDepartureTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -109,7 +110,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_departure_time"
+            android:id="@+id/tvArrivalTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -124,9 +125,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/tv_arrival_time"
-            app:layout_constraintStart_toStartOf="@+id/tv_arrival_time"
-            app:layout_constraintTop_toBottomOf="@+id/tv_arrival_time">
+            app:layout_constraintEnd_toEndOf="@+id/tvDepartureTime"
+            app:layout_constraintStart_toStartOf="@+id/tvDepartureTime"
+            app:layout_constraintTop_toBottomOf="@+id/tvDepartureTime">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -150,9 +151,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/tv_departure_time"
-            app:layout_constraintStart_toStartOf="@+id/tv_departure_time"
-            app:layout_constraintTop_toBottomOf="@+id/tv_departure_time">
+            app:layout_constraintEnd_toEndOf="@+id/tvArrivalTime"
+            app:layout_constraintStart_toStartOf="@+id/tvArrivalTime"
+            app:layout_constraintTop_toBottomOf="@+id/tvArrivalTime">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"

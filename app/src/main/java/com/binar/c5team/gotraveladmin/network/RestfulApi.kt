@@ -8,6 +8,7 @@ import com.binar.c5team.gotraveladmin.model.bookingid.BookingResponseId
 import com.binar.c5team.gotraveladmin.model.createadmin.CreateAdminResponse
 import com.binar.c5team.gotraveladmin.model.data.*
 import com.binar.c5team.gotraveladmin.model.delete.plane.DeletePlaneResponse
+import com.binar.c5team.gotraveladmin.model.deleteadmin.DeleteAdminResponse
 import com.binar.c5team.gotraveladmin.model.flight.FlightResponse
 import com.binar.c5team.gotraveladmin.model.postairport.PostAirportResponse
 import com.binar.c5team.gotraveladmin.model.postflight.CreateFlightResponse
@@ -77,4 +78,7 @@ interface RestfulApi {
 
     @DELETE("airport/{id}")
     fun deleteAirport(@Path("id") id : Int): Call<EditAirportResponse>
+
+    @DELETE("deleteUser/{id}")
+    fun deleteAdmin(@Path("id") id : Int): Call<DeleteAdminResponse>
 }

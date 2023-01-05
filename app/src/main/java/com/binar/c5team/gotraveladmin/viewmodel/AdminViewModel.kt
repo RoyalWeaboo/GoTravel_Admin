@@ -11,6 +11,7 @@ import com.binar.c5team.gotraveladmin.model.admin.Data
 import com.binar.c5team.gotraveladmin.model.admin.User
 import com.binar.c5team.gotraveladmin.model.createadmin.CreateAdminResponse
 import com.binar.c5team.gotraveladmin.model.data.CreateAdminData
+import com.binar.c5team.gotraveladmin.model.deleteadmin.DeleteAdminResponse
 import com.binar.c5team.gotraveladmin.model.user.UserResponse
 import com.binar.c5team.gotraveladmin.network.RetrofitClient
 import retrofit2.Call
@@ -24,6 +25,12 @@ class AdminViewModel: ViewModel() {
     var adminLiveData : MutableLiveData<AdminResponseNew> = MutableLiveData()
     var createAdminLiveData : MutableLiveData<CreateAdminResponse> = MutableLiveData()
 
+    var deleteAdminLiveData: MutableLiveData<DeleteAdminResponse> = MutableLiveData()
+
+    fun deleteAdminData(): MutableLiveData<DeleteAdminResponse> {
+        return deleteAdminLiveData
+    }
+
     fun getAdminData() : MutableLiveData<AdminResponseNew> {
         return adminLiveData
     }
@@ -34,6 +41,28 @@ class AdminViewModel: ViewModel() {
 
     fun getUserData() : MutableLiveData<UserResponse> {
         return userLiveData
+    }
+
+    fun callDeleteAdminData(token: String, id: Int) {
+        RetrofitClient.apiWithToken(token).deleteAdmin(id)
+            .enqueue(object : Callback<DeleteAdminResponse> {
+                override fun onResponse(
+                    call: Call<DeleteAdminResponse>,
+                    response: Response<DeleteAdminResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        deleteAdminLiveData.postValue(response.body())
+                    } else {
+                        Log.d("delete fail", response.body().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<DeleteAdminResponse>, t: Throwable) {
+                    Log.d("delete failure", call.toString())
+
+                }
+
+            })
     }
 
     fun callUserData(token: String) {
