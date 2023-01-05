@@ -57,6 +57,7 @@ class AddAirportFragment : Fragment() {
             }
 
         binding.btnAdd.setOnClickListener {
+            val viewModel = ViewModelProvider(this)[AirportViewModel::class.java]
             val token = sharedPref.getString("token","").toString()
             val city = binding.edtCity.text.toString()
             val code = binding.edtCode.text.toString()
@@ -66,7 +67,11 @@ class AddAirportFragment : Fragment() {
             val status = binding.tvStatus.text.toString()
 
             createAirport(token,city, code ,country,name, province, status)
-            findNavController().navigate(R.id.action_addAirportFragment_to_nav_airport)
+            viewModel.loading.observe(viewLifecycleOwner) {
+                if (it == false) {
+                    findNavController().navigate(R.id.action_addAirportFragment_to_nav_airport)
+                }
+            }
         }
     }
 

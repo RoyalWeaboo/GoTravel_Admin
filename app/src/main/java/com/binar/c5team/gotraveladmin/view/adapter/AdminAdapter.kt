@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.c5team.gotraveladmin.databinding.ItemAdminBinding
+import com.binar.c5team.gotraveladmin.model.AirportList
 import com.binar.c5team.gotraveladmin.model.UserAdminResponse
 import com.binar.c5team.gotraveladmin.model.admin.User
 
 class AdminAdapter(private var listAdmin: List<User>) : RecyclerView.Adapter<AdminAdapter.ViewHolder>() {
 
+    var onEditClick : ((User)->Unit)? = null
+    var onDeleteClick : ((Int)->Unit)? = null
 
 
     class ViewHolder(var binding: ItemAdminBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -25,7 +28,14 @@ class AdminAdapter(private var listAdmin: List<User>) : RecyclerView.Adapter<Adm
         holder.binding.tvUsername.text = listAdmin[position].username
         holder.binding.tvRole.text = listAdmin[position].role
 
+        holder.binding.btnEdit.setOnClickListener {
+            onEditClick?.invoke(listAdmin[position])
 
+        }
+
+        holder.binding.btnDelete.setOnClickListener {
+            onDeleteClick?.invoke(listAdmin[position].id)
+        }
 
     }
 

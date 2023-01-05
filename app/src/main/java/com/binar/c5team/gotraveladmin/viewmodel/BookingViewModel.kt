@@ -16,6 +16,8 @@ import retrofit2.Response
 
 class BookingViewModel: ViewModel() {
 
+    var loading = MutableLiveData<Boolean>()
+
     var bookingIdLiveData : MutableLiveData<BookingResponseId> = MutableLiveData()
     var updateBookingLiveData : MutableLiveData<PutBookingIdResponse> = MutableLiveData()
     var bookingLiveData : MutableLiveData<BookingResponse> = MutableLiveData()
@@ -33,6 +35,7 @@ class BookingViewModel: ViewModel() {
     }
 
     fun callUpdateBookingData(approved: Boolean,token: String,id: Int) {
+        loading.postValue(true)
         RetrofitClient.apiWithToken(token).putBooking(id, ApprovedData(approved))
             .enqueue(object : Callback<PutBookingIdResponse> {
                 override fun onResponse(
@@ -42,10 +45,12 @@ class BookingViewModel: ViewModel() {
                     if (response.isSuccessful) {
                         updateBookingLiveData.postValue(response.body())
                     }
+                    loading.postValue(false)
                 }
 
                 override fun onFailure(call: Call<PutBookingIdResponse>, t: Throwable) {
                     Log.d("Put Booking Data Error", call.toString())
+                    loading.postValue(false)
                 }
 
             })

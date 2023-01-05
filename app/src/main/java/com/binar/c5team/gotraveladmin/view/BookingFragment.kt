@@ -67,6 +67,7 @@ class BookingFragment : Fragment() {
 
             adapter.onCardClick = {
                 val bookingInfo = sharedPref.edit()
+                bookingInfo.putString("confirmation", it.confirmation)
                 bookingInfo.putInt("whislistId", it.id)
                 bookingInfo.putString("namaAkun", it.name)
                 bookingInfo.putBoolean("food", it.food)
@@ -77,6 +78,7 @@ class BookingFragment : Fragment() {
                 bookingInfo.putString("email_user", it.user.email)
                 bookingInfo.putString("mobilephone_user", it.mobilephone)
                 bookingInfo.putString("ktp_user", it.user.noKtp)
+
                 bookingInfo.apply()
 
                 findNavController().navigate(R.id.action_nav_selectBookingFragment_to_detailBookingFragment)

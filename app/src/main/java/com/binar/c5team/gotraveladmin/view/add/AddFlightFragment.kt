@@ -35,34 +35,53 @@ class AddFlightFragment : Fragment() {
         sharedPref = this.requireActivity().getSharedPreferences("datalogin", Context.MODE_PRIVATE)
 
         binding.btnAdd.setOnClickListener {
-            val token = sharedPref.getString("token","").toString()
+            val viewModel = ViewModelProvider(this)[FlightViewModel::class.java]
+            val token = sharedPref.getString("token", "").toString()
             val arrival_time = binding.edtArrivalTime.text.toString()
-            val available_seats = binding.edtSeat.text.toString().toInt()
+            val available_seats = binding.edtSeat.text.toString()
             val departure_time = binding.edtDepartureTime.text.toString()
             val flight_date = binding.edtFlightDate.text.toString()
-            val from_airport_id = binding.edtFromAirportId.text.toString().toInt()
-            val id = binding.edtId.text.toString().toInt()
-            val id_plane = binding.edtIdPlane.text.toString().toInt()
+            val from_airport_id = binding.edtFromAirportId.text.toString()
+            val id = binding.edtId.text.toString()
+            val id_plane = binding.edtIdPlane.text.toString()
             val kelas = binding.edtClass.text.toString()
-            val price = binding.edtPrice.text.toString().toInt()
-            val to_airport_id = binding.edtToAirportId.text.toString().toInt()
+            val price = binding.edtPrice.text.toString()
+            val to_airport_id = binding.edtToAirportId.text.toString()
 
-            createFlight(token,arrival_time,available_seats,departure_time,flight_date,from_airport_id,id,id_plane,kelas,price,to_airport_id)
-            findNavController().navigate(R.id.action_addFlightFragment_to_nav_flight)
+            createFlight(
+                token,
+                arrival_time,
+                available_seats.toInt(),
+                departure_time,
+                flight_date,
+                from_airport_id.toInt(),
+                id.toInt(),
+                id_plane.toInt(),
+                kelas,
+                price.toInt(),
+                to_airport_id.toInt()
+            )
+            viewModel.loading.observe(viewLifecycleOwner) {
+                if (it == false) {
+                    findNavController().navigate(R.id.action_addFlightFragment_to_nav_flight)
+                }
+            }
         }
     }
 
-    private fun createFlight(token: String,
-                             arrival_time: String,
-                             available_seats: Int,
-                             departure_time: String,
-                             flight_date: String,
-                             from_airport_id: Int,
-                             id: Int,
-                             id_plane: Int,
-                             kelas: String,
-                             price: Int,
-                             to_airport_id: Int,) {
+    private fun createFlight(
+        token: String,
+        arrival_time: String,
+        available_seats: Int,
+        departure_time: String,
+        flight_date: String,
+        from_airport_id: Int,
+        id: Int,
+        id_plane: Int,
+        kelas: String,
+        price: Int,
+        to_airport_id: Int,
+    ) {
         val viewModel = ViewModelProvider(this)[FlightViewModel::class.java]
         viewModel.createFlightData().observe(viewLifecycleOwner) {
             if (it != null) {
@@ -75,7 +94,19 @@ class AddFlightFragment : Fragment() {
                 ).show()
             }
         }
-        viewModel.postFlightData(token, arrival_time, available_seats, departure_time, flight_date, from_airport_id, id, id_plane, kelas, price, to_airport_id)
+        viewModel.postFlightData(
+            token,
+            arrival_time,
+            available_seats,
+            departure_time,
+            flight_date,
+            from_airport_id,
+            id,
+            id_plane,
+            kelas,
+            price,
+            to_airport_id
+        )
 
     }
 }

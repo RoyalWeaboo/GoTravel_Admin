@@ -6,23 +6,25 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_selectBookingFragment"
+            android:icon="@drawable/ic_booking"
             android:title="Booking" />
         <item
             android:id="@+id/nav_plane"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_plane"
             android:title="Plane" />
         <item
             android:id="@+id/nav_airport"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_airport"
             android:title="Airport" />
 
         <item
             android:id="@+id/nav_flight"
+            android:icon="@drawable/ic_flight"
             android:title="Flight" />
 
         <item
             android:id="@+id/nav_admin"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_admin"
             android:title="Admin" />
     </group>
 </menu>

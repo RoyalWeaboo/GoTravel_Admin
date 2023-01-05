@@ -61,6 +61,7 @@
         <action
             android:id="@+id/action_nav_booking_to_detailBookingFragment"
             app:destination="@id/detailBookingFragment" />
+        <argument android:name="databooking" />
     </fragment>
     <fragment
         android:id="@+id/detailBookingFragment"
@@ -73,6 +74,7 @@
         <action
             android:id="@+id/action_detailBookingFragment_to_nav_selectBookingFragment"
             app:destination="@id/nav_selectBookingFragment" />
+        <argument android:name="databooking" />
     </fragment>
     <fragment
         android:id="@+id/detailAirportFragment"

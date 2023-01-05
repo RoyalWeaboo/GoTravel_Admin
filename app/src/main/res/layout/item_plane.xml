@@ -1,90 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/cv_plane"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv_plane"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="2dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/tvCountPlane"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/inter"
+            android:text="B-01"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPlane"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="70dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="BOEING-477"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCountPlane"
+            app:layout_constraintEnd_toStartOf="@+id/tvCountPlane"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvCountPlane" />
 
-            <TextView
-                android:id="@+id/tvCountPlane"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
-                android:fontFamily="@font/inter"
-                android:text="B-01"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <!-- Khusus button ini harus diberikan logika untuk mengubah warna jadi inactive -->
+        <!-- Warna inactive : #E40A0A -->
+        <Button
+            android:id="@+id/btnActive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#00C113"
+            android:paddingLeft="10dp"
+            android:paddingTop="0dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="0dp"
+            android:text="Active"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:cornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="@+id/tvPlane"
+            app:layout_constraintTop_toBottomOf="@+id/tvPlane" />
 
-            <TextView
-                android:id="@+id/tvPlane"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="70dp"
-                android:fontFamily="@font/inter_bold"
-                android:text="BOEING-477"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvCountPlane"
-                app:layout_constraintEnd_toStartOf="@+id/tvCountPlane"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvCountPlane" />
+        <ImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <!-- Khusus button ini harus diberikan logika untuk mengubah warna jadi inactive -->
-            <!-- Warna inactive : #E40A0A -->
-            <Button
-                android:id="@+id/btnActive"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="#00C113"
-                android:paddingLeft="10dp"
-                android:paddingTop="0dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="0dp"
-                android:text="Active"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                app:cornerRadius="8dp"
-                app:layout_constraintStart_toStartOf="@+id/tvPlane"
-                app:layout_constraintTop_toBottomOf="@+id/tvPlane" />
-
-            <ImageView
-                android:id="@+id/btn_delete"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/delete"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <ImageView
-                android:id="@+id/btn_edit"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/pen"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btn_delete" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/btn_edit"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/pen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_delete" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

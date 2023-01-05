@@ -11,7 +11,7 @@ data class Data(
     @SerializedName("booking_date")
     val bookingDate: Any,
     @SerializedName("confirmation")
-    val confirmation: Any,
+    val confirmation: String,
     @SerializedName("createdAt")
     val createdAt: String,
     @SerializedName("Flight")

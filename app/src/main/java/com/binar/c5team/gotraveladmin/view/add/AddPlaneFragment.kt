@@ -55,6 +55,7 @@ class AddPlaneFragment : Fragment() {
                 }
             }
         binding.btnAdd.setOnClickListener {
+            val viewModel = ViewModelProvider(this)[PlaneViewModel::class.java]
 
             val planeName = binding.edtPlaneName.text.toString()
             val planeCode = binding.edtCodeAirplane.text.toString()
@@ -62,7 +63,11 @@ class AddPlaneFragment : Fragment() {
             val token = sharedPref.getString("token","").toString()
 
             createPlane(token,planeCode.toInt(),planeName,status)
-            findNavController().navigate(R.id.action_addPlaneFragment_to_nav_plane)
+            viewModel.loading.observe(viewLifecycleOwner) {
+                if (it == false) {
+                    findNavController().navigate(R.id.action_addPlaneFragment_to_nav_plane)
+                }
+            }
         }
     }
 

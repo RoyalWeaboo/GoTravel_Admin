@@ -18,6 +18,7 @@ import com.binar.c5team.gotraveladmin.databinding.FragmentLoginBinding
 import com.binar.c5team.gotraveladmin.model.UserAdminResponse
 import com.binar.c5team.gotraveladmin.model.admin.User
 import com.binar.c5team.gotraveladmin.view.adapter.AdminAdapter
+import com.binar.c5team.gotraveladmin.view.adapter.AirportAdapter
 import com.binar.c5team.gotraveladmin.viewmodel.AdminViewModel
 
 class AdminFragment : Fragment() {
@@ -43,14 +44,6 @@ class AdminFragment : Fragment() {
     private fun showDataAdmin() {
         val viewModel = ViewModelProvider(this)[AdminViewModel::class.java]
         val token = sharedPref.getString("token", "").toString()
-//        viewModel.callAdminData(token, {
-//            binding.rvListAdmin.adapter = AdminAdapter(it)
-//        })
-//        binding.rvListAdmin.layoutManager = LinearLayoutManager(
-//            context, LinearLayoutManager.VERTICAL, false
-//        )
-//        binding.rvListAdmin.setHasFixedSize(true)
-//
         binding.btnAddAdmin.setOnClickListener {
             findNavController().navigate(R.id.action_nav_admin_to_detailAdminFragment)
         }
@@ -68,6 +61,27 @@ class AdminFragment : Fragment() {
                 Log.d("filterAdmin", "showDataAdmin: ${filterAdmin}")
                 adapter = AdminAdapter(filterAdmin)
                 binding.rvListAdmin.adapter = adapter
+
+                adapter.onDeleteClick = {
+                    viewModel.deleteAdminData().observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            Toast.makeText(
+                                requireActivity(),
+                                "Deleted Airport Success",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                                refreshCurrentFragment()
+                        } else {
+                            Toast.makeText(
+                                requireActivity(),
+                                "Delete Failed",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                    viewModel.callDeleteAdminData(token,it)
+                }
+                adapter.notifyDataSetChanged()
             } else {
                 Toast.makeText(
                     requireActivity(),
@@ -77,6 +91,12 @@ class AdminFragment : Fragment() {
             }
         }
         viewModel.callAdminData(token)
+    }
+
+    private fun refreshCurrentFragment(){
+        val id = findNavController().currentDestination?.id
+        findNavController().popBackStack(id!!,true)
+        findNavController().navigate(id)
     }
 
 }

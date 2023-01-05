@@ -16,6 +16,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PlaneViewModel: ViewModel() {
+    var loading = MutableLiveData<Boolean>()
+
     var createPlaneLiveData : MutableLiveData<CreatePlaneResponse> = MutableLiveData()
     var deletePlaneLiveData : MutableLiveData<DeletePlaneResponse> = MutableLiveData()
     var putPlaneLiveData : MutableLiveData<DeletePlaneResponse> = MutableLiveData()
@@ -86,6 +88,7 @@ class PlaneViewModel: ViewModel() {
                       code: Int,
                       name: String,
                       status: String) {
+        loading.postValue(true)
         RetrofitClient.apiWithToken(token).createPlane(CreatePlaneData(code, name, status))
             .enqueue(object : Callback<CreatePlaneResponse> {
                 override fun onResponse(
@@ -96,12 +99,13 @@ class PlaneViewModel: ViewModel() {
                         createPlaneLiveData.postValue(response.body())
                     } else {
                         Log.d("Create Failed", response.body().toString())
-
                     }
+                    loading.postValue(false)
                 }
 
                 override fun onFailure(call: Call<CreatePlaneResponse>, t: Throwable) {
                     Log.d("Create Error", call.toString())
+                    loading.postValue(false)
                 }
 
             })
