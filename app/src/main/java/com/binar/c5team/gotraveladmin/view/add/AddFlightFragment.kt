@@ -44,7 +44,6 @@ class AddFlightFragment : Fragment() {
             val departure_time = binding.edtDepartureTime.text.toString()
             val flight_date = binding.edtFlightDate.text.toString()
             val from_airport_id = binding.edtFromAirportId.text.toString()
-            val id = ""
             val id_plane = binding.edtIdPlane.text.toString()
             val kelas = binding.edtClass.text.toString()
             val price = binding.edtPrice.text.toString()
@@ -57,7 +56,7 @@ class AddFlightFragment : Fragment() {
                 departure_time,
                 flight_date,
                 from_airport_id.toInt(),
-                id.toInt(),
+                0,
                 id_plane.toInt(),
                 kelas,
                 price.toInt(),
