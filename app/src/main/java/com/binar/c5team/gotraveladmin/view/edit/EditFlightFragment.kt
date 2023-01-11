@@ -1,5 +1,6 @@
 package com.binar.c5team.gotraveladmin.view.edit
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -14,6 +15,8 @@ import androidx.navigation.fragment.findNavController
 import com.binar.c5team.gotraveladmin.R
 import com.binar.c5team.gotraveladmin.databinding.FragmentAddFlightBinding
 import com.binar.c5team.gotraveladmin.viewmodel.FlightViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class EditFlightFragment : Fragment() {
@@ -35,6 +38,10 @@ class EditFlightFragment : Fragment() {
         sharedPrefFlight = requireActivity().getSharedPreferences("dataflight", Context.MODE_PRIVATE)
 
         binding.btnAdd.text = "Edit"
+
+        binding.btnDatePick.setOnClickListener {
+            openDatePicker()
+        }
 
         binding.edtId.text = sharedPrefFlight.getInt("id",0).toString()
         binding.edtArrivalTime.setText(sharedPrefFlight.getString("arrival_time","").toString())
@@ -91,5 +98,29 @@ class EditFlightFragment : Fragment() {
         }
         viewModel.callPutFlightData(token, id, arrival_time, available_seats, departure_time, flight_date, from_airport_id, id_plane, kelas, price, to_airport_id)
 
+    }
+
+    private fun openDatePicker() {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            requireActivity(),
+            { _, y, m, d ->
+                val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val date = Calendar.getInstance()
+                date.set(y, m, d)
+                val dateString = formatter.format(date.time)
+                binding.edtFlightDate.setText(dateString)
+            },
+            year,
+            month,
+            day
+        )
+        datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+
+        datePickerDialog.show()
     }
 }

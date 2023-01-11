@@ -271,11 +271,22 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="32dp"
                 android:text="Add"
+                android:backgroundTint="@color/teal_200"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_flight_date" />
+
+            <ImageView
+                android:id="@+id/btn_date_pick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_date_35"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_flight_date"
+                app:layout_constraintEnd_toEndOf="@+id/edt_flight_date"
+                app:layout_constraintTop_toTopOf="@+id/edt_flight_date" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

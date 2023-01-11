@@ -54,7 +54,7 @@ class BookingFragment : Fragment() {
 
             val filterBooking: MutableList<Booking> = ArrayList()
             for (i in it.data.bookings) {
-                if (i.tripType == "One Trip") {
+                if (i.tripType == "One Way") {
                     filterBooking.add(i)
                 }
             }

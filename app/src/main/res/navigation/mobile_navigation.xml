@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/nav_admin"
         android:name="com.binar.c5team.gotraveladmin.view.AdminFragment"
-        android:label="AdminFragment" >
+        android:label="Admin" >
         <action
             android:id="@+id/action_nav_admin_to_detailAdminFragment"
             app:destination="@id/detailAdminFragment" />
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/nav_airport"
         android:name="com.binar.c5team.gotraveladmin.view.AirportFragment"
-        android:label="AirportFragment" >
+        android:label="Airport" >
         <action
             android:id="@+id/action_nav_airport_to_detailAirportFragment"
             app:destination="@id/detailAirportFragment" />
@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/nav_flight"
         android:name="com.binar.c5team.gotraveladmin.view.FlightFragment"
-        android:label="FlightFragment" >
+        android:label="Flight" >
         <action
             android:id="@+id/action_nav_flight_to_detailFlightFragment"
             app:destination="@id/detailFlightFragment" />
@@ -45,7 +45,7 @@
     <fragment
         android:id="@+id/nav_plane"
         android:name="com.binar.c5team.gotraveladmin.view.PlaneFragment"
-        android:label="PlaneFragment" >
+        android:label="Plane" >
         <action
             android:id="@+id/action_nav_plane_to_addPlaneFragment"
             app:destination="@id/addPlaneFragment" />
@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/nav_booking"
         android:name="com.binar.c5team.gotraveladmin.view.BookingFragment"
-        android:label="fragment_booking"
+        android:label="Booking One Trip"
         tools:layout="@layout/fragment_booking" >
         <action
             android:id="@+id/action_nav_booking_to_detailBookingFragment"
@@ -66,7 +66,7 @@
     <fragment
         android:id="@+id/detailBookingFragment"
         android:name="com.binar.c5team.gotraveladmin.view.detailfragment.DetailBookingFragment"
-        android:label="fragment_detail_booking"
+        android:label="Detail Booking"
         tools:layout="@layout/fragment_detail_booking" >
         <action
             android:id="@+id/action_detailBookingFragment_to_nav_booking"
@@ -79,17 +79,17 @@
     <fragment
         android:id="@+id/detailAirportFragment"
         android:name="com.binar.c5team.gotraveladmin.view.detailfragment.DetailAirportFragment"
-        android:label="fragment_detail_airport"
+        android:label="Detail Airport"
         tools:layout="@layout/fragment_detail_airport" />
     <fragment
         android:id="@+id/detailFlightFragment"
         android:name="com.binar.c5team.gotraveladmin.view.detailfragment.DetailFlightFragment"
-        android:label="fragment_detail_flight"
+        android:label="Detail Flight"
         tools:layout="@layout/fragment_detail_flight" />
     <fragment
         android:id="@+id/detailAdminFragment"
         android:name="com.binar.c5team.gotraveladmin.view.add.DetailAdminFragment"
-        android:label="fragment_detail_admin"
+        android:label="Detail Admin"
         tools:layout="@layout/fragment_detail_admin" >
         <action
             android:id="@+id/action_detailAdminFragment_to_nav_admin"
@@ -98,7 +98,7 @@
     <fragment
         android:id="@+id/nav_selectBookingFragment"
         android:name="com.binar.c5team.gotraveladmin.view.SelectBookingFragment"
-        android:label="fragment_select_booking"
+        android:label="Booking"
         tools:layout="@layout/fragment_select_booking" >
         <action
             android:id="@+id/action_nav_selectBookingFragment_to_detailBookingFragment"
@@ -107,7 +107,7 @@
     <fragment
         android:id="@+id/bookingRoundTripFragment"
         android:name="com.binar.c5team.gotraveladmin.view.BookingRoundTripFragment"
-        android:label="fragment_booking_round_trip"
+        android:label="Booking Round Trip"
         tools:layout="@layout/fragment_booking_round_trip" >
         <action
             android:id="@+id/action_bookingRoundTripFragment_to_detailBookingFragment"
@@ -116,7 +116,7 @@
     <fragment
         android:id="@+id/addPlaneFragment"
         android:name="com.binar.c5team.gotraveladmin.view.add.AddPlaneFragment"
-        android:label="fragment_add_plane"
+        android:label="Add Plane"
         tools:layout="@layout/fragment_add_plane" >
         <action
             android:id="@+id/action_addPlaneFragment_to_nav_plane"
@@ -125,7 +125,7 @@
     <fragment
         android:id="@+id/editPlaneFragment"
         android:name="com.binar.c5team.gotraveladmin.view.edit.EditPlaneFragment"
-        android:label="fragment_edit_plane"
+        android:label="Edit Plane"
         tools:layout="@layout/fragment_edit_plane" >
         <action
             android:id="@+id/action_editPlaneFragment_to_nav_plane"
@@ -134,7 +134,7 @@
     <fragment
         android:id="@+id/addFlightFragment"
         android:name="com.binar.c5team.gotraveladmin.view.add.AddFlightFragment"
-        android:label="fragment_add_flight"
+        android:label="Add Flight"
         tools:layout="@layout/fragment_add_flight" >
         <action
             android:id="@+id/action_addFlightFragment_to_nav_flight"
@@ -143,7 +143,7 @@
     <fragment
         android:id="@+id/editFlightFragment"
         android:name="com.binar.c5team.gotraveladmin.view.edit.EditFlightFragment"
-        android:label="fragment_edit_flight"
+        android:label="Edit Flight"
         tools:layout="@layout/fragment_edit_flight" >
         <action
             android:id="@+id/action_editFlightFragment_to_nav_flight"
@@ -152,7 +152,7 @@
     <fragment
         android:id="@+id/addAirportFragment"
         android:name="com.binar.c5team.gotraveladmin.view.add.AddAirportFragment"
-        android:label="fragment_add_airport"
+        android:label="Add Airport"
         tools:layout="@layout/fragment_add_airport" >
         <action
             android:id="@+id/action_addAirportFragment_to_nav_airport"
@@ -161,7 +161,7 @@
     <fragment
         android:id="@+id/editAirportFragment"
         android:name="com.binar.c5team.gotraveladmin.view.edit.EditAirportFragment"
-        android:label="fragment_edit_airport"
+        android:label="Edit Airport"
         tools:layout="@layout/fragment_edit_airport" >
         <action
             android:id="@+id/action_editAirportFragment_to_nav_airport"

@@ -1,5 +1,6 @@
 package com.binar.c5team.gotraveladmin.view.add
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -26,6 +27,8 @@ import com.binar.c5team.gotraveladmin.viewmodel.AdminViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class DetailAdminFragment : Fragment() {
@@ -46,6 +49,10 @@ class DetailAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = this.requireActivity().getSharedPreferences("datalogin", Context.MODE_PRIVATE)
+
+        binding.edtDate.setOnClickListener {
+            openDatePicker()
+        }
 
         binding.textView12.text = "Add Admin"
         binding.btnEdit.text = "Add"
@@ -92,5 +99,29 @@ class DetailAdminFragment : Fragment() {
 
         viewModel.callCreateAdmin(name, username, gender, date_of_birth, no_ktp, address, email, password, role, token)
 
+    }
+
+    private fun openDatePicker() {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            requireActivity(),
+            { _, y, m, d ->
+                val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val date = Calendar.getInstance()
+                date.set(y, m, d)
+                val dateString = formatter.format(date.time)
+                binding.edtDate.setText(dateString)
+            },
+            year,
+            month,
+            day
+        )
+        datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+
+        datePickerDialog.show()
     }
 }
