@@ -1,19 +1,24 @@
 package com.binar.c5team.gotraveladmin.view.add
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.binar.c5team.gotraveladmin.R
 import com.binar.c5team.gotraveladmin.databinding.FragmentAddFlightBinding
+import com.binar.c5team.gotraveladmin.databinding.FragmentAddPlaneBinding
 import com.binar.c5team.gotraveladmin.viewmodel.FlightViewModel
+import com.binar.c5team.gotraveladmin.viewmodel.PlaneViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddFlightFragment : Fragment() {
 
@@ -34,6 +39,10 @@ class AddFlightFragment : Fragment() {
 
         binding.edtId.visibility = View.GONE
 
+        binding.btnDatePick.setOnClickListener {
+            openDatePicker()
+        }
+
         binding.btnAdd.setOnClickListener {
             val viewModel = ViewModelProvider(this)[FlightViewModel::class.java]
             val token = sharedPref.getString("token", "").toString()
@@ -46,6 +55,7 @@ class AddFlightFragment : Fragment() {
             val kelas = binding.edtClass.text.toString()
             val price = binding.edtPrice.text.toString()
             val to_airport_id = binding.edtToAirportId.text.toString()
+
 
             createFlight(
                 token,
@@ -107,5 +117,29 @@ class AddFlightFragment : Fragment() {
             to_airport_id
         )
 
+    }
+
+    private fun openDatePicker() {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            requireActivity(),
+            { _, y, m, d ->
+                val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val date = Calendar.getInstance()
+                date.set(y, m, d)
+                val dateString = formatter.format(date.time)
+                binding.edtFlightDate.setText(dateString)
+            },
+            year,
+            month,
+            day
+        )
+        datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+
+        datePickerDialog.show()
     }
 }

@@ -1,6 +1,6 @@
 package com.binar.c5team.gotraveladmin.view.edit
 
-import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -17,6 +17,8 @@ import androidx.navigation.fragment.findNavController
 import com.binar.c5team.gotraveladmin.R
 import com.binar.c5team.gotraveladmin.databinding.FragmentAddPlaneBinding
 import com.binar.c5team.gotraveladmin.viewmodel.PlaneViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class EditPlaneFragment : Fragment() {
@@ -24,17 +26,16 @@ class EditPlaneFragment : Fragment() {
     private lateinit var binding: FragmentAddPlaneBinding
     lateinit var sharedPrefPlane: SharedPreferences
 
-    private val statusList = arrayOf("On", "Off")
+    private val status_list = arrayOf("On", "Off")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = FragmentAddPlaneBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = this.requireActivity().getSharedPreferences("datalogin", Context.MODE_PRIVATE)
@@ -43,10 +44,10 @@ class EditPlaneFragment : Fragment() {
         binding.edtPlaneName.setText(sharedPrefPlane.getString("name",""))
         binding.edtCodeAirplane.setText(sharedPrefPlane.getInt("code",0).toString())
 
-        binding.chooseStatus.adapter = ArrayAdapter(
+        binding.chooseStatus.adapter = ArrayAdapter<String>(
             this.requireActivity(),
             android.R.layout.simple_list_item_1,
-            statusList
+            status_list
         )
         binding.chooseStatus.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -56,7 +57,7 @@ class EditPlaneFragment : Fragment() {
                     position: Int,
                     p3: Long
                 ) {
-                    binding.tvStatus.text = statusList[position]
+                    binding.tvStatus.text = status_list.get(position)
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -68,7 +69,7 @@ class EditPlaneFragment : Fragment() {
 
             val planeName = binding.edtPlaneName.text.toString()
             val planeCode = binding.edtCodeAirplane.text.toString()
-            val status = binding.tvStatus.text.toString()
+            var status = binding.tvStatus.text.toString()
             val token = sharedPref.getString("token", "").toString()
             val id = sharedPrefPlane.getInt("id",0)
             editPlane(id,token,planeCode.toInt(),planeName,status)
@@ -98,4 +99,6 @@ class EditPlaneFragment : Fragment() {
         viewModel.callPutPlaneData(token, id, code, name, status)
 
     }
+
+
 }
