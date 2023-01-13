@@ -1,5 +1,6 @@
 package com.binar.c5team.gotraveladmin.network
 
+import com.binar.c5team.gotraveladmin.NotificationPostResponse
 import com.binar.c5team.gotraveladmin.model.*
 import com.binar.c5team.gotraveladmin.model.admin.AdminResponseNew
 import com.binar.c5team.gotraveladmin.model.booking.BookingResponse
@@ -81,4 +82,8 @@ interface RestfulApi {
 
     @DELETE("deleteUser/{id}")
     fun deleteAdmin(@Path("id") id : Int): Call<DeleteAdminResponse>
+
+    //Post Notification
+    @POST("notification")
+    fun postNotification(@Body notificationData : NotificationData) : Call<NotificationPostResponse>
 }

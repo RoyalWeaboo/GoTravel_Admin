@@ -65,19 +65,20 @@ class BookingFragment : Fragment() {
             adapter.notifyDataSetChanged()
 
 
-            adapter.onCardClick = {
+            adapter.onCardClick = {its ->
                 val bookingInfo = sharedPref.edit()
-                bookingInfo.putString("confirmation", it.confirmation)
-                bookingInfo.putInt("whislistId", it.id)
-                bookingInfo.putString("namaAkun", it.name)
-                bookingInfo.putBoolean("food", it.food)
-                bookingInfo.putInt("baggage", it.baggage)
-                bookingInfo.putInt("totalPrice", it.totalprice)
-                bookingInfo.putString("name_user", it.user.name)
-                bookingInfo.putString("gender_user", it.user.gender)
-                bookingInfo.putString("email_user", it.user.email)
-                bookingInfo.putString("mobilephone_user", it.mobilephone)
-                bookingInfo.putString("ktp_user", it.user.noKtp)
+                bookingInfo.putString("confirmation", its.confirmation)
+                bookingInfo.putInt("userId", its.user.id)
+                bookingInfo.putInt("whislistId", its.id)
+                bookingInfo.putString("namaAkun", its.name)
+                bookingInfo.putBoolean("food", its.food)
+                bookingInfo.putInt("baggage", its.baggage)
+                bookingInfo.putInt("totalPrice", its.totalprice)
+                bookingInfo.putString("name_user", its.user.name)
+                bookingInfo.putString("gender_user", its.user.gender)
+                bookingInfo.putString("email_user", its.user.email)
+                bookingInfo.putString("mobilephone_user", its.mobilephone)
+                bookingInfo.putString("ktp_user", its.user.noKtp)
 
                 bookingInfo.apply()
 

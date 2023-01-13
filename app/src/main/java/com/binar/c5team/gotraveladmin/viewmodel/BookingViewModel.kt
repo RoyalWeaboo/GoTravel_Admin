@@ -4,10 +4,12 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.binar.c5team.gotraveladmin.NotificationPostResponse
 import com.binar.c5team.gotraveladmin.model.booking.Booking
 import com.binar.c5team.gotraveladmin.model.booking.BookingResponse
 import com.binar.c5team.gotraveladmin.model.bookingid.ApprovedData
 import com.binar.c5team.gotraveladmin.model.bookingid.BookingResponseId
+import com.binar.c5team.gotraveladmin.model.data.NotificationData
 import com.binar.c5team.gotraveladmin.model.putbooking.PutBookingIdResponse
 import com.binar.c5team.gotraveladmin.network.RetrofitClient
 import retrofit2.Call
@@ -21,6 +23,8 @@ class BookingViewModel: ViewModel() {
     var bookingIdLiveData : MutableLiveData<BookingResponseId> = MutableLiveData()
     var updateBookingLiveData : MutableLiveData<PutBookingIdResponse> = MutableLiveData()
     var bookingLiveData : MutableLiveData<BookingResponse> = MutableLiveData()
+
+    var postNotificationLiveData: MutableLiveData<NotificationPostResponse> = MutableLiveData()
 
     fun getBookingIdListData(): MutableLiveData<BookingResponseId> {
         return bookingIdLiveData
@@ -93,6 +97,32 @@ class BookingViewModel: ViewModel() {
                 override fun onFailure(call: Call<BookingResponseId>, t: Throwable) {
                     Log.d("Fetch Profile Data Error", call.toString())
                 }
+            })
+    }
+
+    fun postNotificationApi(token: String, message: String, idUser : Int) {
+        loading.postValue(true)
+        RetrofitClient.apiWithToken(token).postNotification(NotificationData(message, idUser))
+            .enqueue(object : Callback<NotificationPostResponse> {
+                override fun onResponse(
+                    call: Call<NotificationPostResponse>,
+                    response: Response<NotificationPostResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        postNotificationLiveData.postValue(response.body())
+                        Log.d("Post Notification Success, id is", response.body()!!.data.id.toString())
+                        loading.postValue(false)
+                    } else {
+                        Log.d("Post Notification Failed", response.body().toString())
+                        loading.postValue(false)
+                    }
+                }
+
+                override fun onFailure(call: Call<NotificationPostResponse>, t: Throwable) {
+                    Log.d("Post Notification Error", call.toString())
+                    loading.postValue(false)
+                }
+
             })
     }
 }

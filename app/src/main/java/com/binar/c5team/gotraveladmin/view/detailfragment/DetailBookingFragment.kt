@@ -93,11 +93,13 @@ class DetailBookingFragment : Fragment() {
 
         val token = sharedPrefUser.getString("token", "").toString()
         val id = sharedPref.getInt("whislistId", 0)
+        val userId = sharedPref.getInt("userId", 0)
 
         binding.btnAccept.setOnClickListener {
             putApproved(true, token, id)
             viewModel.loading.observe(viewLifecycleOwner) {
                 if (it == false) {
+                    postNotification(token, userId)
                     findNavController().navigate(R.id.action_detailBookingFragment_to_nav_selectBookingFragment)
                 }
             }
@@ -107,6 +109,7 @@ class DetailBookingFragment : Fragment() {
             putApproved(false, token, id)
             viewModel.loading.observe(viewLifecycleOwner) {
                 if (it == false) {
+                    postDeclinedNotification(token, userId)
                     findNavController().navigate(R.id.action_detailBookingFragment_to_nav_selectBookingFragment)
                 }
             }
@@ -144,6 +147,18 @@ class DetailBookingFragment : Fragment() {
 //                }
 //
 //            })
+    }
+
+    private fun postNotification(token : String, id : Int) {
+        val viewModel = ViewModelProvider(this)[BookingViewModel::class.java]
+        val message = "Your Ticket by id : $id is approved by Admin ! Your Ticket is now active, please board on time. Have a Safe Flight !"
+        viewModel.postNotificationApi(token, message, id)
+    }
+
+    private fun postDeclinedNotification(token : String, id : Int) {
+        val viewModel = ViewModelProvider(this)[BookingViewModel::class.java]
+        val message = "Your Ticket by id : $id is declined by Admin ! if you find this wrong, please contact Customer Service."
+        viewModel.postNotificationApi(token, message, id)
     }
 
 }
