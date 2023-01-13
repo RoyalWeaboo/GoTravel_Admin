@@ -97,8 +97,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun hideItem() {
         val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
-        val nav_Menu: Menu = navigationView.getMenu()
-        nav_Menu.findItem(R.id.nav_admin).setVisible(false)
+        val nav_Menu: Menu = navigationView.menu
+        nav_Menu.findItem(R.id.nav_admin).isVisible = false
     }
 
 

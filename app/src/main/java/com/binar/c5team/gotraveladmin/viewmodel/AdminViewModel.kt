@@ -3,12 +3,7 @@ package com.binar.c5team.gotraveladmin.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.binar.c5team.gotraveladmin.model.LoginResponse
-import com.binar.c5team.gotraveladmin.model.AdminResponse
-import com.binar.c5team.gotraveladmin.model.UserAdminResponse
 import com.binar.c5team.gotraveladmin.model.admin.AdminResponseNew
-import com.binar.c5team.gotraveladmin.model.admin.Data
-import com.binar.c5team.gotraveladmin.model.admin.User
 import com.binar.c5team.gotraveladmin.model.createadmin.CreateAdminResponse
 import com.binar.c5team.gotraveladmin.model.data.CreateAdminData
 import com.binar.c5team.gotraveladmin.model.deleteadmin.DeleteAdminResponse
@@ -21,9 +16,8 @@ import retrofit2.Response
 class AdminViewModel: ViewModel() {
     var userLiveData: MutableLiveData<UserResponse> = MutableLiveData()
 
-    var loginLiveData : MutableLiveData<LoginResponse> = MutableLiveData()
     var adminLiveData : MutableLiveData<AdminResponseNew> = MutableLiveData()
-    var createAdminLiveData : MutableLiveData<CreateAdminResponse> = MutableLiveData()
+    private var createAdminLiveData : MutableLiveData<CreateAdminResponse> = MutableLiveData()
 
     var deleteAdminLiveData: MutableLiveData<DeleteAdminResponse> = MutableLiveData()
 

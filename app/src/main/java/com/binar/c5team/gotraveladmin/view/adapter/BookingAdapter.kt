@@ -11,9 +11,7 @@ class BookingAdapter(private var listBooking: List<Booking>): RecyclerView.Adapt
 
     var onCardClick : ((Booking)->Unit)? = null
 
-    class ViewHolder(var binding: ItemBookingBinding): RecyclerView.ViewHolder(binding.root){
-
-    }
+    class ViewHolder(var binding: ItemBookingBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ItemBookingBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -28,7 +26,7 @@ class BookingAdapter(private var listBooking: List<Booking>): RecyclerView.Adapt
         holder.binding.tvTotalPrice.text = "Rp. ${listBooking[position].totalprice}"
         holder.binding.tvTripType.text = listBooking[position].tripType
 
-        if (listBooking[position].approved == true) {
+        if (listBooking[position].approved) {
             holder.binding.btnApproved.text = "Approved"
             holder.binding.btnApproved.setBackgroundColor(Color.parseColor("#48FD07"))
         } else {

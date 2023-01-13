@@ -2,22 +2,18 @@ package com.binar.c5team.gotraveladmin.view
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Binder
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.c5team.gotraveladmin.R
 import com.binar.c5team.gotraveladmin.databinding.FragmentFlightBinding
-import com.binar.c5team.gotraveladmin.view.adapter.AirportAdapter
 import com.binar.c5team.gotraveladmin.view.adapter.FlightAdapter
-import com.binar.c5team.gotraveladmin.view.adapter.PlaneAdapter
-import com.binar.c5team.gotraveladmin.viewmodel.AirportViewModel
 import com.binar.c5team.gotraveladmin.viewmodel.FlightViewModel
 
 class FlightFragment : Fragment() {
@@ -25,7 +21,7 @@ class FlightFragment : Fragment() {
     private lateinit var binding: FragmentFlightBinding
     private lateinit var adapter: FlightAdapter
     private lateinit var sharedPref: SharedPreferences
-    lateinit var sharedPrefLogin: SharedPreferences
+    private lateinit var sharedPrefLogin: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

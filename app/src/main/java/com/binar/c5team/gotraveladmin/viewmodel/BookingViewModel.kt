@@ -1,11 +1,9 @@
 package com.binar.c5team.gotraveladmin.viewmodel
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.binar.c5team.gotraveladmin.NotificationPostResponse
-import com.binar.c5team.gotraveladmin.model.booking.Booking
 import com.binar.c5team.gotraveladmin.model.booking.BookingResponse
 import com.binar.c5team.gotraveladmin.model.bookingid.ApprovedData
 import com.binar.c5team.gotraveladmin.model.bookingid.BookingResponseId

@@ -1,5 +1,6 @@
 package com.binar.c5team.gotraveladmin.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -8,17 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.c5team.gotraveladmin.R
 import com.binar.c5team.gotraveladmin.databinding.FragmentBookingBinding
 import com.binar.c5team.gotraveladmin.model.booking.Booking
-import com.binar.c5team.gotraveladmin.model.bookingid.Whislists
-import com.binar.c5team.gotraveladmin.view.adapter.AirportAdapter
 import com.binar.c5team.gotraveladmin.view.adapter.BookingAdapter
-import com.binar.c5team.gotraveladmin.view.adapter.WhislistAdapter
-import com.binar.c5team.gotraveladmin.viewmodel.AirportViewModel
 import com.binar.c5team.gotraveladmin.viewmodel.BookingViewModel
 
 
@@ -33,7 +29,7 @@ class BookingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentBookingBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -45,6 +41,7 @@ class BookingFragment : Fragment() {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun showBookingData() {
         val viewModel = ViewModelProvider(this)[BookingViewModel::class.java]
         viewModel.getBookingListData().observe(viewLifecycleOwner) {

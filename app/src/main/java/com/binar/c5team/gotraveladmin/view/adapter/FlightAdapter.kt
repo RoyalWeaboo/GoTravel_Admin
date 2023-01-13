@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.c5team.gotraveladmin.databinding.ItemFlightBinding
-import com.binar.c5team.gotraveladmin.model.PlaneList
 import com.binar.c5team.gotraveladmin.model.flight.Flight
 
 class FlightAdapter(private var listFlight: List<Flight>): RecyclerView.Adapter<FlightAdapter.ViewHolder>() {
@@ -13,9 +12,7 @@ class FlightAdapter(private var listFlight: List<Flight>): RecyclerView.Adapter<
     var onEditClick : ((Flight)->Unit)? = null
     var onDeleteClick : ((Int)->Unit)? = null
 
-    class ViewHolder(var binding: ItemFlightBinding): RecyclerView.ViewHolder(binding.root){
-
-    }
+    class ViewHolder(var binding: ItemFlightBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ItemFlightBinding.inflate(LayoutInflater.from(parent.context),parent,false)

@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.binar.c5team.gotraveladmin.model.PlaneList
 import com.binar.c5team.gotraveladmin.model.PlaneResponse
-import com.binar.c5team.gotraveladmin.model.createadmin.CreateAdminResponse
-import com.binar.c5team.gotraveladmin.model.data.CreateAdminData
 import com.binar.c5team.gotraveladmin.model.data.CreatePlaneData
 import com.binar.c5team.gotraveladmin.model.delete.plane.DeletePlaneResponse
 import com.binar.c5team.gotraveladmin.model.postplane.CreatePlaneResponse

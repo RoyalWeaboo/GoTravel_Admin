@@ -1,23 +1,17 @@
 package com.binar.c5team.gotraveladmin.view.adapter
 
-import android.content.res.ColorStateList
 import android.graphics.Color
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.binar.c5team.gotraveladmin.databinding.ItemAdminBinding
 import com.binar.c5team.gotraveladmin.databinding.ItemPlaneBinding
 import com.binar.c5team.gotraveladmin.model.PlaneList
-import com.binar.c5team.gotraveladmin.model.UserAdminResponse
 
 class PlaneAdapter(private var listPlane: List<PlaneList>) : RecyclerView.Adapter<PlaneAdapter.ViewHolder>() {
     var onEditClick : ((PlaneList)->Unit)? = null
     var onDeleteClick : ((Int)->Unit)? = null
 
-    class ViewHolder(var binding: ItemPlaneBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    }
+    class ViewHolder(var binding: ItemPlaneBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ItemPlaneBinding.inflate(LayoutInflater.from(parent.context), parent, false)

@@ -1,23 +1,22 @@
 package com.binar.c5team.gotraveladmin.view.edit
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.binar.c5team.gotraveladmin.R
 import com.binar.c5team.gotraveladmin.databinding.FragmentAddAirportBinding
-import com.binar.c5team.gotraveladmin.databinding.FragmentAddFlightBinding
 import com.binar.c5team.gotraveladmin.viewmodel.AirportViewModel
-import com.binar.c5team.gotraveladmin.viewmodel.PlaneViewModel
 
 
 class EditAirportFragment : Fragment() {
@@ -26,26 +25,27 @@ class EditAirportFragment : Fragment() {
     lateinit var sharedPrefAirport: SharedPreferences
 
 
-    private val status_list = arrayOf("On", "Off")
+    private val statusList = arrayOf("On", "Off")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddAirportBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = this.requireActivity().getSharedPreferences("datalogin", Context.MODE_PRIVATE)
         sharedPrefAirport =
             requireActivity().getSharedPreferences("dataairport", Context.MODE_PRIVATE)
 
-        binding.chooseStatus.adapter = ArrayAdapter<String>(
+        binding.chooseStatus.adapter = ArrayAdapter(
             this.requireActivity(),
             android.R.layout.simple_list_item_1,
-            status_list
+            statusList
         )
         binding.chooseStatus.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -55,7 +55,7 @@ class EditAirportFragment : Fragment() {
                     position: Int,
                     p3: Long
                 ) {
-                    binding.tvStatus.text = status_list.get(position)
+                    binding.tvStatus.text = statusList[position]
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {

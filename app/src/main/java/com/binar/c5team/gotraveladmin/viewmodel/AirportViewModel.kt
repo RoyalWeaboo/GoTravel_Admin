@@ -3,7 +3,6 @@ package com.binar.c5team.gotraveladmin.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.binar.c5team.gotraveladmin.model.AirportList
 import com.binar.c5team.gotraveladmin.model.AirportResponse
 import com.binar.c5team.gotraveladmin.model.data.CreateAirportData
 import com.binar.c5team.gotraveladmin.model.postairport.PostAirportResponse

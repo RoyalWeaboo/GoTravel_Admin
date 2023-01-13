@@ -1,7 +1,10 @@
 package com.binar.c5team.gotraveladmin.network
 
 import com.binar.c5team.gotraveladmin.NotificationPostResponse
-import com.binar.c5team.gotraveladmin.model.*
+import com.binar.c5team.gotraveladmin.model.AirportResponse
+import com.binar.c5team.gotraveladmin.model.LoginData
+import com.binar.c5team.gotraveladmin.model.LoginResponse
+import com.binar.c5team.gotraveladmin.model.PlaneResponse
 import com.binar.c5team.gotraveladmin.model.admin.AdminResponseNew
 import com.binar.c5team.gotraveladmin.model.booking.BookingResponse
 import com.binar.c5team.gotraveladmin.model.bookingid.ApprovedData
@@ -18,7 +21,6 @@ import com.binar.c5team.gotraveladmin.model.putairport.EditAirportResponse
 import com.binar.c5team.gotraveladmin.model.putbooking.PutBookingIdResponse
 import com.binar.c5team.gotraveladmin.model.putflight.EditFlightResponse
 import com.binar.c5team.gotraveladmin.model.user.UserResponse
-import com.binar.c5team.gotraveladmin.view.edit.EditFlightFragment
 import retrofit2.Call
 import retrofit2.http.*
 

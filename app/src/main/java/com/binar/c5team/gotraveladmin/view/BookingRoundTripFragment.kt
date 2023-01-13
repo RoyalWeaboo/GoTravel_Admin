@@ -3,15 +3,14 @@ package com.binar.c5team.gotraveladmin.view
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.c5team.gotraveladmin.R
-import com.binar.c5team.gotraveladmin.databinding.FragmentBookingBinding
 import com.binar.c5team.gotraveladmin.databinding.FragmentBookingRoundTripBinding
 import com.binar.c5team.gotraveladmin.model.booking.Booking
 import com.binar.c5team.gotraveladmin.view.adapter.BookingAdapter
@@ -27,7 +26,7 @@ class BookingRoundTripFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentBookingRoundTripBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,7 +37,7 @@ class BookingRoundTripFragment : Fragment() {
         showBookingData()
     }
 
-    fun showBookingData() {
+    private fun showBookingData() {
         val viewModel = ViewModelProvider(this)[BookingViewModel::class.java]
         viewModel.getBookingListData().observe(viewLifecycleOwner) {
             binding.rvListBooking.layoutManager = LinearLayoutManager(

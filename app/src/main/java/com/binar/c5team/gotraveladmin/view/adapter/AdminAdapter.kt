@@ -1,23 +1,18 @@
 package com.binar.c5team.gotraveladmin.view.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.c5team.gotraveladmin.databinding.ItemAdminBinding
-import com.binar.c5team.gotraveladmin.model.AirportList
-import com.binar.c5team.gotraveladmin.model.UserAdminResponse
 import com.binar.c5team.gotraveladmin.model.admin.User
 
 class AdminAdapter(private var listAdmin: List<User>) : RecyclerView.Adapter<AdminAdapter.ViewHolder>() {
 
-    var onEditClick : ((User)->Unit)? = null
+    private var onEditClick : ((User)->Unit)? = null
     var onDeleteClick : ((Int)->Unit)? = null
 
 
-    class ViewHolder(var binding: ItemAdminBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    }
+    class ViewHolder(var binding: ItemAdminBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ItemAdminBinding.inflate(LayoutInflater.from(parent.context), parent, false)

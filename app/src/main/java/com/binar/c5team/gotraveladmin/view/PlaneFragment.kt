@@ -3,35 +3,31 @@ package com.binar.c5team.gotraveladmin.view
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.c5team.gotraveladmin.R
-import com.binar.c5team.gotraveladmin.databinding.FragmentAdminBinding
 import com.binar.c5team.gotraveladmin.databinding.FragmentPlaneBinding
-import com.binar.c5team.gotraveladmin.view.adapter.AdminAdapter
-import com.binar.c5team.gotraveladmin.view.adapter.FlightAdapter
 import com.binar.c5team.gotraveladmin.view.adapter.PlaneAdapter
-import com.binar.c5team.gotraveladmin.viewmodel.AdminViewModel
 import com.binar.c5team.gotraveladmin.viewmodel.PlaneViewModel
 
 
 class PlaneFragment : Fragment() {
     private lateinit var binding: FragmentPlaneBinding
     lateinit var sharedPref: SharedPreferences
-    lateinit var sharedPrefPlane: SharedPreferences
+    private lateinit var sharedPrefPlane: SharedPreferences
     private lateinit var adapter: PlaneAdapter
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentPlaneBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -47,7 +43,7 @@ class PlaneFragment : Fragment() {
         }
     }
 
-    fun showPlaneData() {
+    private fun showPlaneData() {
         val viewModel = ViewModelProvider(this)[PlaneViewModel::class.java]
         val token = sharedPref.getString("token", "").toString()
         viewModel.callPlaneData {

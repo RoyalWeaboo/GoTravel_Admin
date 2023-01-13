@@ -1,5 +1,6 @@
 package com.binar.c5team.gotraveladmin.view.detailfragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -9,27 +10,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.c5team.gotraveladmin.R
 import com.binar.c5team.gotraveladmin.databinding.FragmentDetailBookingBinding
-import com.binar.c5team.gotraveladmin.model.bookingid.ApprovedData
-import com.binar.c5team.gotraveladmin.model.bookingid.BookingResponseId
 import com.binar.c5team.gotraveladmin.model.bookingid.Whislists
-import com.binar.c5team.gotraveladmin.model.putbooking.PutBookingIdResponse
-import com.binar.c5team.gotraveladmin.network.RetrofitClient
 import com.binar.c5team.gotraveladmin.view.adapter.WhislistAdapter
 import com.binar.c5team.gotraveladmin.viewmodel.BookingViewModel
-import com.binar.c5team.gotraveladmin.viewmodel.FlightViewModel
 import com.bumptech.glide.Glide
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
 
 class DetailBookingFragment : Fragment() {
 
@@ -43,11 +32,12 @@ class DetailBookingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailBookingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = requireActivity().getSharedPreferences("databooking", Context.MODE_PRIVATE)
@@ -56,7 +46,6 @@ class DetailBookingFragment : Fragment() {
 
 
         binding.tvNamaAkun.text = sharedPref.getString("namaAkun", "")
-        binding.tvMakanan.text = if (sharedPref.getBoolean("food", true) == true) "On" else "Off"
         binding.tvBagasi.text = "${sharedPref.getInt("baggage", 0)} Kg"
         binding.tvTotalprice.text = "Rp. ${sharedPref.getInt("totalPrice", 0)}"
 
@@ -66,7 +55,7 @@ class DetailBookingFragment : Fragment() {
         binding.tvNoHp.text = sharedPref.getString("mobilephone_user", "")
         binding.tvKtp.text = sharedPref.getString("ktp_user", "")
 
-        val confirmation = sharedPref.getString("confirmation", "")
+        //val confirmation = sharedPref.getString("confirmation", "")
 
         val viewModel = ViewModelProvider(this)[BookingViewModel::class.java]
         viewModel.getBookingIdListData().observe(viewLifecycleOwner) {

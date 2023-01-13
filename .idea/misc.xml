@@ -32,7 +32,10 @@
         <entry key="..\:/Users/ricki/AndroidStudioProjects/GoTravelAdmin/app/src/main/res/layout/content_main.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/ricki/AndroidStudioProjects/GoTravelAdmin/app/src/main/res/layout/fragment_add_flight.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/ricki/AndroidStudioProjects/GoTravelAdmin/app/src/main/res/layout/fragment_booking.xml" value="0.18385416666666668" />
+        <entry key="..\:/Users/ricki/AndroidStudioProjects/GoTravelAdmin/app/src/main/res/layout/fragment_gallery.xml" value="0.1" />
+        <entry key="..\:/Users/ricki/AndroidStudioProjects/GoTravelAdmin/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/ricki/AndroidStudioProjects/GoTravelAdmin/app/src/main/res/layout/fragment_login.xml" value="0.14537037037037037" />
+        <entry key="..\:/Users/ricki/AndroidStudioProjects/GoTravelAdmin/app/src/main/res/layout/fragment_slideshow.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15946985891406584" />
         <entry key="app/src/main/res/layout/fragment_admin.xml" value="0.15946985891406584" />
         <entry key="app/src/main/res/layout/fragment_edit_admin.xml" value="0.15946985891406584" />

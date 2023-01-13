@@ -1,5 +1,6 @@
 package com.binar.c5team.gotraveladmin.view.edit
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -23,16 +24,17 @@ class EditPlaneFragment : Fragment() {
     private lateinit var binding: FragmentAddPlaneBinding
     lateinit var sharedPrefPlane: SharedPreferences
 
-    private val status_list = arrayOf("On", "Off")
+    private val statusList = arrayOf("On", "Off")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddPlaneBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = this.requireActivity().getSharedPreferences("datalogin", Context.MODE_PRIVATE)
@@ -41,10 +43,10 @@ class EditPlaneFragment : Fragment() {
         binding.edtPlaneName.setText(sharedPrefPlane.getString("name",""))
         binding.edtCodeAirplane.setText(sharedPrefPlane.getInt("code",0).toString())
 
-        binding.chooseStatus.adapter = ArrayAdapter<String>(
+        binding.chooseStatus.adapter = ArrayAdapter(
             this.requireActivity(),
             android.R.layout.simple_list_item_1,
-            status_list
+            statusList
         )
         binding.chooseStatus.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -54,7 +56,7 @@ class EditPlaneFragment : Fragment() {
                     position: Int,
                     p3: Long
                 ) {
-                    binding.tvStatus.text = status_list.get(position)
+                    binding.tvStatus.text = statusList[position]
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -66,7 +68,7 @@ class EditPlaneFragment : Fragment() {
 
             val planeName = binding.edtPlaneName.text.toString()
             val planeCode = binding.edtCodeAirplane.text.toString()
-            var status = binding.tvStatus.text.toString()
+            val status = binding.tvStatus.text.toString()
             val token = sharedPref.getString("token", "").toString()
             val id = sharedPrefPlane.getInt("id",0)
             editPlane(id,token,planeCode.toInt(),planeName,status)

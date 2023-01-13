@@ -4,22 +4,18 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.c5team.gotraveladmin.R
 import com.binar.c5team.gotraveladmin.databinding.FragmentAirportBinding
 import com.binar.c5team.gotraveladmin.model.AirportList
-import com.binar.c5team.gotraveladmin.model.admin.User
-import com.binar.c5team.gotraveladmin.view.adapter.AdminAdapter
 import com.binar.c5team.gotraveladmin.view.adapter.AirportAdapter
-import com.binar.c5team.gotraveladmin.view.adapter.PlaneAdapter
-import com.binar.c5team.gotraveladmin.viewmodel.AdminViewModel
 import com.binar.c5team.gotraveladmin.viewmodel.AirportViewModel
 
 class AirportFragment : Fragment() {
@@ -46,7 +42,7 @@ class AirportFragment : Fragment() {
         showairport()
     }
 
-    fun showairport() {
+    private fun showairport() {
         val viewModel = ViewModelProvider(this)[AirportViewModel::class.java]
         val token = sharedPrefLogin.getString("token", "").toString()
 
@@ -64,7 +60,7 @@ class AirportFragment : Fragment() {
                 for (i in it.data.airports) {
                     filterAirport.add(i)
                 }
-                Log.d("filterAirport", "showDataAdmin: ${filterAirport}")
+                Log.d("filterAirport", "showDataAdmin: $filterAirport")
                 adapter = AirportAdapter(filterAirport)
                 binding.rvListAirport.adapter = adapter
 

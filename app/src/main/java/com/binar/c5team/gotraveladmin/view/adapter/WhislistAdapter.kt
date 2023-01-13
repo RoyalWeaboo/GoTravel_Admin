@@ -7,9 +7,7 @@ import com.binar.c5team.gotraveladmin.databinding.ItemWhislistBinding
 import com.binar.c5team.gotraveladmin.model.bookingid.Whislists
 
 class WhislistAdapter(private var listWishlist: List<Whislists>): RecyclerView.Adapter<WhislistAdapter.ViewHolder>() {
-    class ViewHolder(var binding: ItemWhislistBinding): RecyclerView.ViewHolder(binding.root){
-
-    }
+    class ViewHolder(var binding: ItemWhislistBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ItemWhislistBinding.inflate(LayoutInflater.from(parent.context),parent,false)

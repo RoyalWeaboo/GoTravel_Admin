@@ -1,31 +1,19 @@
 package com.binar.c5team.gotraveladmin.view.add
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.binar.c5team.gotraveladmin.MainActivity
 import com.binar.c5team.gotraveladmin.R
-import com.binar.c5team.gotraveladmin.databinding.FragmentDetailAdminBinding
-import com.binar.c5team.gotraveladmin.databinding.FragmentDetailAirportBinding
 import com.binar.c5team.gotraveladmin.databinding.FragmentEditAdminBinding
-import com.binar.c5team.gotraveladmin.model.LoginData
-import com.binar.c5team.gotraveladmin.model.LoginResponse
-import com.binar.c5team.gotraveladmin.model.createadmin.CreateAdminResponse
-import com.binar.c5team.gotraveladmin.model.data.CreateAdminData
-import com.binar.c5team.gotraveladmin.network.RetrofitClient
 import com.binar.c5team.gotraveladmin.viewmodel.AdminViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class DetailAdminFragment : Fragment() {
@@ -38,7 +26,7 @@ class DetailAdminFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentEditAdminBinding.inflate(inflater,container,false)
         return binding.root
     }

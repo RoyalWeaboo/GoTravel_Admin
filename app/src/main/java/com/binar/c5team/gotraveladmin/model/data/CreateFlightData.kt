@@ -1,7 +1,5 @@
 package com.binar.c5team.gotraveladmin.model.data
 
-import com.google.gson.annotations.SerializedName
-
 data class CreateFlightData(
     val arrival_time: String,
     val available_seats: Int,
