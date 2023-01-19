@@ -30,7 +30,7 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_edit"
             app:layout_constraintEnd_toStartOf="@+id/btn_edit"
-            app:layout_constraintTop_toTopOf="@+id/btn_edit" />
+            app:layout_constraintStart_toEndOf="@+id/tv_name_plane"/>
 
         <TextView
             android:id="@+id/tvPlane"
@@ -53,7 +53,6 @@
             android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_remove"
             app:layout_constraintEnd_toStartOf="@+id/btn_remove"
-            app:layout_constraintTop_toTopOf="@+id/btn_remove"
             app:srcCompat="@drawable/pen" />
 
         <ImageView
@@ -64,6 +63,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_name_plane"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_name_plane"
+            android:layout_marginBottom="16dp"
             app:srcCompat="@drawable/delete" />
 
         <!-- Khusus button ini harus diberikan logika untuk mengubah warna jadi inactive -->

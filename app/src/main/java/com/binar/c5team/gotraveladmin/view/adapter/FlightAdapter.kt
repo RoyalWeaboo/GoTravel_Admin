@@ -1,5 +1,6 @@
 package com.binar.c5team.gotraveladmin.view.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -19,10 +20,11 @@ class FlightAdapter(private var listFlight: List<Flight>): RecyclerView.Adapter<
         return ViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.tvArrivalTime.text = listFlight[position].arrivalTime
         holder.binding.tvDepartureTime.text = listFlight[position].departureTime
-        holder.binding.tvPrice.text = listFlight[position].price.toString()
+        holder.binding.tvPrice.text = "Rp."+listFlight[position].price.toString()
         holder.binding.tvNamePlane.text = listFlight[position].plane.name
         holder.binding.tvFromAirport.text = listFlight[position].fromAirport.city
         holder.binding.tvToAirport.text = listFlight[position].toAirport.city

@@ -43,8 +43,7 @@ class DetailBookingFragment : Fragment() {
         sharedPref = requireActivity().getSharedPreferences("databooking", Context.MODE_PRIVATE)
         sharedPrefUser = requireActivity().getSharedPreferences("datalogin", Context.MODE_PRIVATE)
 
-
-
+        binding.bookingId.text = sharedPref.getInt("whislistId", 0).toString()
         binding.tvNamaAkun.text = sharedPref.getString("namaAkun", "")
         binding.tvBagasi.text = "${sharedPref.getInt("baggage", 0)} Kg"
         binding.tvTotalprice.text = "Rp. ${sharedPref.getInt("totalPrice", 0)}"
@@ -88,7 +87,7 @@ class DetailBookingFragment : Fragment() {
             putApproved(true, token, id)
             viewModel.loading.observe(viewLifecycleOwner) {
                 if (it == false) {
-                    postNotification(token, userId)
+                    postNotification(token, userId, id)
                     findNavController().navigate(R.id.action_detailBookingFragment_to_nav_selectBookingFragment)
                 }
             }
@@ -98,7 +97,7 @@ class DetailBookingFragment : Fragment() {
             putApproved(false, token, id)
             viewModel.loading.observe(viewLifecycleOwner) {
                 if (it == false) {
-                    postDeclinedNotification(token, userId)
+                    postDeclinedNotification(token, userId, id)
                     findNavController().navigate(R.id.action_detailBookingFragment_to_nav_selectBookingFragment)
                 }
             }
@@ -138,16 +137,16 @@ class DetailBookingFragment : Fragment() {
 //            })
     }
 
-    private fun postNotification(token : String, id : Int) {
+    private fun postNotification(token : String, userId : Int, id : Int) {
         val viewModel = ViewModelProvider(this)[BookingViewModel::class.java]
         val message = "Your Ticket by id : $id is approved by Admin ! Your Ticket is now active, please board on time. Have a Safe Flight !"
-        viewModel.postNotificationApi(token, message, id)
+        viewModel.postNotificationApi(token, message, userId)
     }
 
-    private fun postDeclinedNotification(token : String, id : Int) {
+    private fun postDeclinedNotification(token : String, userId : Int, id : Int) {
         val viewModel = ViewModelProvider(this)[BookingViewModel::class.java]
         val message = "Your Ticket by id : $id is declined by Admin ! if you find this wrong, please contact Customer Service."
-        viewModel.postNotificationApi(token, message, id)
+        viewModel.postNotificationApi(token, message, userId)
     }
 
 }
