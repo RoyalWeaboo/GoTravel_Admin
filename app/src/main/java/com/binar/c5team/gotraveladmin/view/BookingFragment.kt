@@ -26,6 +26,7 @@ class BookingFragment : Fragment() {
     private lateinit var sharedPref: SharedPreferences
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +39,12 @@ class BookingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = requireActivity().getSharedPreferences("databooking", Context.MODE_PRIVATE)
         showBookingData()
+
+        binding.btnRefreshOneWay.setOnClickListener {
+            val id = findNavController().currentDestination?.id
+            findNavController().popBackStack(id!!,true)
+            findNavController().navigate(id)
+        }
 
     }
 
@@ -81,9 +88,9 @@ class BookingFragment : Fragment() {
 
                 findNavController().navigate(R.id.action_nav_selectBookingFragment_to_detailBookingFragment)
             }
+
         }
         viewModel.callBookingData()
     }
-
 
 }

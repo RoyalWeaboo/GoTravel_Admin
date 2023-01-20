@@ -35,6 +35,12 @@ class BookingRoundTripFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = requireActivity().getSharedPreferences("databooking", Context.MODE_PRIVATE)
         showBookingData()
+
+        binding.btnRefreshRoundTrip.setOnClickListener {
+            val id = findNavController().currentDestination?.id
+            findNavController().popBackStack(id!!,true)
+            findNavController().navigate(id)
+        }
     }
 
     private fun showBookingData() {
@@ -76,4 +82,5 @@ class BookingRoundTripFragment : Fragment() {
         }
         viewModel.callBookingData()
     }
+
 }
